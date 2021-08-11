@@ -24,3 +24,20 @@ export const LiFromHeader = styled.li`
   list-style: none;
   margin: 15px;
 `;
+
+export const HeroBannerImage = styled.div`
+    background-image: url(${ ({ image }) => image });
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 15%;
+    width: 99.21vw;
+    height: 700px;
+    display: flex;
+    align-items: center;
+`;
+
+export const HeroBannerDetails = styled.div`
+  font-size: 1.6em;
+  margin-left: 4vw;
+  width: 37vw;
+`;
