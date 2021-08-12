@@ -9,6 +9,7 @@ export const HeaderMainDiv = styled.header`
 
 export const Logo = styled.img`
   width: 100px;
+  margin-left: 20px;
 `;
 
 export const HeaderContainer = styled.div`
@@ -31,13 +32,36 @@ export const UlFromHeader = styled.ul`
 `;
 
 export const LiFromHeader = styled.li`
-  font-weight: ${(props) => props.fontWeight ? props.fontWeight : "initial" };
+  font-weight: ${(props) => props.fontWeight ? "900" : "initial" };
   list-style: none;
   margin: 15px;
 `;
 
+export const DivSearchBar = styled.div`
+  background-color: ${ ({ isOpen }) => isOpen ? 'black' : 'transparent' };
+  border: ${ ({ isOpen }) => isOpen ? '1px solid white' : 'transparent' };
+  padding: 6px 9px;
+  margin-right: 30px;
+  display: flex;
+`;
+
 export const SearchBar = styled.input`
-  display: ${({ display }) => display};
+  display: ${({ display }) => display ? '' : 'none' };
+  background-color: inherit;
+  color: white;
+  border: none;
+  width: 250px;
+  &:focus {
+    outline: none;
+  }
+`;
+
+export const ProfileAvatar = styled.div`
+  width: 36px;
+  height: 36px;
+  border-radius: 5px;
+  margin-right: 60px;
+  background-color: #b55650;
 `;
 
 export const HeroBannerImage = styled.div`

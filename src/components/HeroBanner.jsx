@@ -9,7 +9,6 @@ function HeroBanner() {
     const moviesFromApi = await fetchAPI('/discover/tv?sort_by=popularity.desc&page=1&with_networks=213&include_null_first_air_dates=false')
     setMediaBackground(moviesFromApi.results[0])
   }, []);
-  console.log(mediaBackground)
   return (
     <>
       { mediaBackground.backdrop_path ? 
