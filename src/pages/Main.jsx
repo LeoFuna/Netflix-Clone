@@ -17,7 +17,7 @@ function Main() {
       <div>
         <Header />
         <HeroBanner />
-        {genres.map((genre) => <Carousel key={ genre.id } genreId={ genre.id } /> )}
+        {genres.map((genre) => <Carousel key={ genre.id } genre={ genre } /> )}
       </div>
     )
   }

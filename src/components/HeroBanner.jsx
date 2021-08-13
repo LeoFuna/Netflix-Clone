@@ -6,7 +6,7 @@ function HeroBanner() {
   const [mediaBackground, setMediaBackground] = useState({})
 
   useEffect(async () => {
-    const moviesFromApi = await fetchAPI('/discover/tv?sort_by=popularity.desc&page=1&with_networks=213&include_null_first_air_dates=false')
+    const moviesFromApi = await fetchAPI('/trending/all/week?')
     setMediaBackground(moviesFromApi.results[0])
   }, []);
   return (

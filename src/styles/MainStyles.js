@@ -14,7 +14,7 @@ export const Logo = styled.img`
 
 export const HeaderContainer = styled.div`
   width: 47vw;
-  margin-left: 2vw;
+  padding-left: 2vw;
   background: rgb(0,0,0);
   background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.7511379551820728) 32%, rgba(0,0,0,0) 100%);
   display: flex;
@@ -24,6 +24,7 @@ export const HeaderContainer = styled.div`
 
 export const HeaderContainerRight = styled(HeaderContainer)`
   justify-content: flex-end;
+  padding-right: 1.5vw;
 `;
 
 export const UlFromHeader = styled.ul`
@@ -88,3 +89,9 @@ export const HeroBannerDetails = styled.div`
   margin-left: 4vw;
   width: 37vw;
 `;
+
+// export const ScrollContainer = styled.div`
+//   overflow-x: scroll;
+//   overflow-y: hidden;
+//   width: auto;
+// `;
