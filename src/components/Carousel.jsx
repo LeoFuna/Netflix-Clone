@@ -14,7 +14,6 @@ function Carousel( { genre: { id, name } } ) {
       sevenMedias.push(filteredMedia[index]);
       index += 1;
     } while ( index < 9 )
-    console.log(sevenMedias)
     setMediaFromGenre(sevenMedias)
   }, [])
 

@@ -15,7 +15,7 @@ function HeroBanner() {
       <HeroBannerImage image={`https://image.tmdb.org/t/p/original${mediaBackground['backdrop_path']}`} >
         <GradientOnBannerContainer>
         <HeroBannerDetails>
-          <h1 style={{color: 'white'}}>{ mediaBackground.name }</h1>
+          <h1 style={{color: 'white'}}>{ mediaBackground.title }</h1>
           <p style={{color: 'gray'}}>{ mediaBackground.overview }</p>
           <p style={{color: '#158007', fontSize: '16px', fontWeight: 'bolder'}}>{ mediaBackground.vote_average } pontos</p>
           <button type="button">ASISTIR</button>
