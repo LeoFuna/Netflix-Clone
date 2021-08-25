@@ -13,7 +13,7 @@ export const Logo = styled.img`
 `;
 
 export const HeaderContainer = styled.div`
-  width: 47vw;
+  width: 47.6vw;
   padding-left: 2vw;
   background: rgb(0,0,0);
   background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.7511379551820728) 32%, rgba(0,0,0,0) 100%);
@@ -70,7 +70,7 @@ export const HeroBannerImage = styled.div`
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 50% 5%;
-    width: 100vw;
+    width: 99vw;
     height: 100vh;
 `;
 
