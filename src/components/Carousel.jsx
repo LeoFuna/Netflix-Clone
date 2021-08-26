@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { fetchAPI } from '../services';
+import { ButtonCarrousel } from '../styles/MainStyles';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import { faChevronRight, faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 import AliceCarousel from 'react-alice-carousel';
 
 function Carousel( { genre: { id, name } } ) {
@@ -20,18 +23,19 @@ function Carousel( { genre: { id, name } } ) {
 
   const responsive = {
     0: { items: 1 },
-    250: { items: 2 },
-    500: { items: 3 },
-    750: { items: 4 },
-    1000: { items: 5 },
-    1250: { items: 6 },
+    180: { items: 2 },
+    360: { items: 3 },
+    540: { items: 4 },
+    720: { items: 5 },
+    900: { items: 6 },
+    1080: { items: 7 },
+    1260: { items: 8 },
   };
 
   function galleryItems() {
     return mediasFromGenre.map((media) => (
       <div style={{margin: '20px' }} key={ media.id }>
-        {/* <p>{ media.title }</p> */}
-        <img style={{ width: '250px' }} src={ `https://image.tmdb.org/t/p/original${media.poster_path}` } />
+        <img style={{ width: '180px', height: '270px' }} src={ `https://image.tmdb.org/t/p/original${media.poster_path}` } />
       </div>
     ))
   }
@@ -46,8 +50,8 @@ function Carousel( { genre: { id, name } } ) {
       slideToIndex={ currentIndex } 
       onSlideChanged={ onSlideChanged } 
       infinite 
-      renderNextButton={() => <button style={{ color: 'white', fontSize: '50px', fontWeight: 'bolder', position: 'absolute', right: '-1vw', padding: '159px 30px', marginTop: '-417px', backgroundColor: 'rgba(0,0,0,0.8)', border: 'none',zIndex: '1' }}>{ '>' }</button>}
-      renderPrevButton={ () => <button style={{ color: 'white', fontSize: '50px', fontWeight: 'bolder', position: 'absolute', left: '0vw', padding: '159px 30px', marginTop: '-417px', backgroundColor: 'rgba(0,0,0,0.8)', border: 'none', zIndex: '1' }}>{ '<' }</button> }
+      renderNextButton={() => <ButtonCarrousel><FontAwesomeIcon icon={ faChevronRight } /></ButtonCarrousel>}
+      renderPrevButton={ () => <ButtonCarrousel style={{ left: '0vw'}}><FontAwesomeIcon icon={ faChevronLeft } /></ButtonCarrousel>}
       responsive={ responsive } 
     >{ galleryItems() }</AliceCarousel>
   }
