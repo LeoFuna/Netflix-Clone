@@ -90,8 +90,46 @@ export const HeroBannerDetails = styled.div`
   width: 37vw;
 `;
 
-// export const ScrollContainer = styled.div`
-//   overflow-x: scroll;
-//   overflow-y: hidden;
-//   width: auto;
-// `;
+export const ButtonCarrousel = styled.button`
+  color: rgba(0,0,0,0.4);
+  font-size: 35px;
+  font-weight: bolder;
+  position: absolute;
+  right: -1px;
+  width: 5vw;
+  height: 14.1vw;
+  top: 1.4vw;
+  background-color: rgba(0,0,0,0.4);
+  border: none;
+  z-index: 1;
+  transition:font-size 0.5s;
+  -moz-transition:font-size 0.5s; /* Firefox 4 */
+  -webkit-transition:font-size 0.5s; /* Safari and Chrome */
+  -o-transition:font-size 0.5s;
+  &:hover {
+    background-color: rgba(0,0,0,0.5);
+    color: white;
+    font-size: 40px;
+  }
+  @media only screen and (min-width: 1680px) {
+    top: 1.05vw;
+  }
+  @media only screen and (min-width: 1440px) and (max-width: 1680px) {
+    top: 1.2vw;
+  }
+`;
+
+export const HeaderCarousel = styled.h1`
+  display: block;
+  color: white;
+  font-size: 28px; 
+  margin-left: 3vw;
+  margin-bottom: -3.5vh;
+`;
+
+export const CursorSpanCarousel = styled.span`
+/* style={{fontSize: '0.8em', marginLeft: '0.4em'}} */
+  font-size: 0.8em;
+  margin-left: 0.4em;
+  display: ${({ toggleCursor }) => toggleCursor ? '' : 'none'};
+`;
