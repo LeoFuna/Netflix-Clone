@@ -118,3 +118,11 @@ export const ButtonCarrousel = styled.button`
     top: 1.2vw;
   }
 `;
+
+export const HeaderCarousel = styled.h1`
+  display: block;
+  color: white;
+  font-size: 28px; 
+  margin-left: 3vw;
+  margin-bottom: -3.5vh;
+`;

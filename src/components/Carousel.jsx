@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { fetchAPI } from '../services';
-import { ButtonCarrousel } from '../styles/MainStyles';
+import { ButtonCarrousel, HeaderCarousel } from '../styles/MainStyles';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import { faChevronRight, faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 import AliceCarousel from 'react-alice-carousel';
@@ -59,7 +59,7 @@ function Carousel( { genre: { id, name } } ) {
 
   return (
     <div style={{ display: 'flex', flexDirection:'column', width: '99vw',  backgroundColor: 'black' }}>
-      <h1 style={{ color: 'white' }}>{ name }</h1>
+      <HeaderCarousel>{ name }</HeaderCarousel>
       <div style={{ display: 'flex', alignItems: 'center', margin: '20px' }} >
         { renderGallery() }
       </div>
