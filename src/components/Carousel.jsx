@@ -35,11 +35,11 @@ function Carousel( { genre: { id, name } } ) {
   function galleryItems() {
     return mediasFromGenre.map((media) => (
       <div style={{margin: '20px' }} key={ media.id }>
-        <img style={{ width: '180px', height: '270px' }} src={ `https://image.tmdb.org/t/p/original${media.poster_path}` } />
+        <img style={{ width: '10vw', height: '14vw' }} src={ `https://image.tmdb.org/t/p/original${media.poster_path}` } />
       </div>
     ))
   }
-
+  
   const onSlideChanged = (event) => {
     setCurrentIndex(event.item)
   };

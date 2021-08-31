@@ -96,10 +96,9 @@ export const ButtonCarrousel = styled.button`
   font-weight: bolder;
   position: absolute;
   right: -1px;
-  width: 100px;
-  height: 270px;
-  padding: 115px 30px;
-  margin-top: -311px;
+  width: 5vw;
+  height: 14.1vw;
+  top: 1.4vw;
   background-color: rgba(0,0,0,0.4);
   border: none;
   z-index: 1;
@@ -111,5 +110,11 @@ export const ButtonCarrousel = styled.button`
     background-color: rgba(0,0,0,0.5);
     color: white;
     font-size: 40px;
+  }
+  @media only screen and (min-width: 1680px) {
+    top: 1.05vw;
+  }
+  @media only screen and (min-width: 1440px) and (max-width: 1680px) {
+    top: 1.2vw;
   }
 `;
