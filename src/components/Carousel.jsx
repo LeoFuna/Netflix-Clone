@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { fetchAPI } from '../services';
-import { ButtonCarrousel, HeaderCarousel } from '../styles/MainStyles';
+import { ButtonCarrousel, HeaderCarousel, CursorSpanCarousel } from '../styles/MainStyles';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import { faChevronRight, faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 import AliceCarousel from 'react-alice-carousel';
@@ -9,6 +9,7 @@ import AliceCarousel from 'react-alice-carousel';
 function Carousel( { genre: { id, name } } ) {
   const [mediasFromGenre, setMediaFromGenre] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [toggleCursor, setToggleCursor] = useState(false);
   useEffect( async () => {
     const mediasFromApi = await fetchAPI(`/discover/movie?with_genres=${ id }&sort_by=popularity.desc`);
     const filteredMedia = mediasFromApi.results.filter((media) => media.poster_path !== null && media.original_language !== 'jp')
@@ -59,7 +60,12 @@ function Carousel( { genre: { id, name } } ) {
 
   return (
     <div style={{ display: 'flex', flexDirection:'column', width: '99vw',  backgroundColor: 'black' }}>
-      <HeaderCarousel>{ name }</HeaderCarousel>
+      <div style={{display: 'flex', alignItems: 'baseline'}}>
+        <HeaderCarousel onMouseLeave={() => setToggleCursor(false)} onMouseOver={() => setToggleCursor(true)}>
+          { name }
+          <CursorSpanCarousel toggleCursor={toggleCursor}><FontAwesomeIcon icon={ faChevronRight } /></CursorSpanCarousel>
+        </HeaderCarousel>
+      </div>
       <div style={{ display: 'flex', alignItems: 'center', margin: '20px' }} >
         { renderGallery() }
       </div>

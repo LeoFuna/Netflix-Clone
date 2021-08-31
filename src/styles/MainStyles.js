@@ -126,3 +126,10 @@ export const HeaderCarousel = styled.h1`
   margin-left: 3vw;
   margin-bottom: -3.5vh;
 `;
+
+export const CursorSpanCarousel = styled.span`
+/* style={{fontSize: '0.8em', marginLeft: '0.4em'}} */
+  font-size: 0.8em;
+  margin-left: 0.4em;
+  display: ${({ toggleCursor }) => toggleCursor ? '' : 'none'};
+`;
