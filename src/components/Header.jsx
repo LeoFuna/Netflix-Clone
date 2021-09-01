@@ -33,17 +33,17 @@ function Header() {
       <HeaderContainer>
         <Logo src={ netflixLogo } alt="Netflix Logo" />
         <UlFromHeader>
-          <LiFromHeader onClick={ handleTargetOnClick } id="inicio" fontWeight={ whichIsBold.inicio }>Início</LiFromHeader>
-          <LiFromHeader onClick={ handleTargetOnClick } id="series" fontWeight={ whichIsBold.series }>Séries</LiFromHeader>
-          <LiFromHeader onClick={ handleTargetOnClick } id="filmes" fontWeight={ whichIsBold.filmes }>Filmes</LiFromHeader>
-          <LiFromHeader onClick={ handleTargetOnClick } id="bombando" fontWeight={ whichIsBold.bombando }>Bombando</LiFromHeader>
-          <LiFromHeader onClick={ handleTargetOnClick } id="minhaLista" fontWeight={ whichIsBold.minhaLista }>Minha lista</LiFromHeader>
+          <LiFromHeader onClick={ handleTargetOnClick } id="inicio" isBold={ whichIsBold.inicio }>Início</LiFromHeader>
+          <LiFromHeader onClick={ handleTargetOnClick } id="series" isBold={ whichIsBold.series }>Séries</LiFromHeader>
+          <LiFromHeader onClick={ handleTargetOnClick } id="filmes" isBold={ whichIsBold.filmes }>Filmes</LiFromHeader>
+          <LiFromHeader onClick={ handleTargetOnClick } id="bombando" isBold={ whichIsBold.bombando }>Bombando</LiFromHeader>
+          <LiFromHeader onClick={ handleTargetOnClick } id="minhaLista" isBold={ whichIsBold.minhaLista }>Minha lista</LiFromHeader>
         </UlFromHeader>
       </HeaderContainer>
       <HeaderContainerRight>
         <DivSearchBar isOpen={ isVisible }>
           <FontAwesomeIcon style={{ fontSize: '1.15em', marginRight: '5px' }} onClick={ handleSearchBarVisibility } icon={ faSearch } />
-          <SearchBar placeholder="Títulos, gente e gêneros" display={ isVisible } type="text" />
+          <SearchBar placeholder="Títulos, gente e gêneros" isVisible={ isVisible } type="text" />
         </DivSearchBar>
         <ProfileAvatar />
       </HeaderContainerRight>

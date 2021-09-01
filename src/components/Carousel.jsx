@@ -82,7 +82,7 @@ function Carousel( { genre: { id, name } } ) {
 
 Carousel.propTypes = {
   genre: PropTypes.shape({
-    id: PropTypes.string,
+    id: PropTypes.number,
     name: PropTypes.string,
   }).isRequired
 };

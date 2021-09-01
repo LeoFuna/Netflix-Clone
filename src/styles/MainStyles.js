@@ -33,7 +33,7 @@ export const UlFromHeader = styled.ul`
 `;
 
 export const LiFromHeader = styled.li`
-  font-weight: ${(props) => props.fontWeight ? "900" : "initial" };
+  font-weight: ${({ isBold }) => isBold ? "900" : "initial" };
   list-style: none;
   margin: 15px;
 `;
@@ -47,7 +47,7 @@ export const DivSearchBar = styled.div`
 `;
 
 export const SearchBar = styled.input`
-  display: ${({ display }) => display ? '' : 'none' };
+  display: ${({ isVisible }) => isVisible ? '' : 'none' };
   background-color: inherit;
   color: white;
   border: none;
