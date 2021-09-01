@@ -91,7 +91,7 @@ export const HeroBannerDetails = styled.div`
 `;
 
 export const ButtonCarrousel = styled.button`
-  color: rgba(0,0,0,0.4);
+  color: ${({ toggleDivCarousel }) => toggleDivCarousel ? 'rgba(244,244,240,0.4)' : 'rgba(0,0,0,0.4)'};
   font-size: 35px;
   font-weight: bolder;
   position: absolute;
