@@ -61,9 +61,9 @@ function Carousel( { genre: { id, name } } ) {
   return (
     <div style={{ display: 'flex', flexDirection:'column', width: '99vw',  backgroundColor: 'black' }}>
       <div style={{display: 'flex', alignItems: 'baseline'}}>
-        <HeaderCarousel onMouseLeave={() => setToggleCursor(false)} onMouseOver={() => setToggleCursor(true)}>
+        <HeaderCarousel onMouseOver={() => setToggleCursor(true) } onMouseLeave={ () => setTimeout(() => setToggleCursor(false), 500) } toggleCursor={ toggleCursor } >
           { name }
-          <CursorSpanCarousel toggleCursor={toggleCursor}><FontAwesomeIcon icon={ faChevronRight } /></CursorSpanCarousel>
+          <CursorSpanCarousel>Ver tudo <FontAwesomeIcon icon={ faChevronRight } /></CursorSpanCarousel>
         </HeaderCarousel>
       </div>
       <div style={{ display: 'flex', alignItems: 'center', margin: '20px' }} >
