@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 export const HeaderMainDiv = styled.header`
   display: flex;
@@ -119,17 +119,56 @@ export const ButtonCarrousel = styled.button`
   }
 `;
 
-export const HeaderCarousel = styled.h1`
+export const CursorSpanCarousel = styled.span`
+  color: rgb(0,0,0);
+  font-size: 0.6em;
   display: block;
+`;
+
+const ShowingText = keyframes`
+  from { 
+    color: rgb(0,0,0);
+    margin-left: 0em;
+  }
+  to {
+    color: white;
+    margin-left: 0.75em;
+  }
+`;
+
+const HiddingText = keyframes`
+  from { 
+    color: white;
+    margin-left: 0.75em;
+  }
+  to {
+    color: rgb(0,0,0);
+    margin-left: 0em;
+  }
+`;
+
+export const HeaderCarousel = styled.h1`
+  display: flex;
+  align-items: center;
   color: white;
   font-size: 28px; 
   margin-left: 3vw;
   margin-bottom: -3.5vh;
+  ${CursorSpanCarousel} {
+    animation: ${({ toggleCursor }) => toggleCursor ? HiddingText : ''};
+    animation-duration: ${({ toggleCursor }) => toggleCursor ? '0.8s' : '0s'};
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+  }
+  &:hover {
+    cursor: pointer;
+    ${CursorSpanCarousel} {
+      animation: ${ShowingText};
+      animation-duration: 1.2s;
+      animation-fill-mode: forwards;
+      animation-iteration-count: 1;
+    }
+  }
 `;
 
-export const CursorSpanCarousel = styled.span`
-/* style={{fontSize: '0.8em', marginLeft: '0.4em'}} */
-  font-size: 0.8em;
-  margin-left: 0.4em;
-  display: ${({ toggleCursor }) => toggleCursor ? '' : 'none'};
-`;
+
