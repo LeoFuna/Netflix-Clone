@@ -152,6 +152,7 @@ export const HeaderCarousel = styled.h1`
   align-items: center;
   color: white;
   font-size: 28px; 
+  width: fit-content;
   margin-left: 3vw;
   margin-bottom: -3.5vh;
   ${CursorSpanCarousel} {
