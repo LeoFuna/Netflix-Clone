@@ -91,7 +91,7 @@ export const HeroBannerDetails = styled.div`
 `;
 
 export const ButtonCarrousel = styled.button`
-  color: rgba(0,0,0,0.4);
+  color: ${({ toggleDivCarousel }) => toggleDivCarousel ? 'rgba(244,244,240,0.4)' : 'rgba(0,0,0,0.4)'};
   font-size: 35px;
   font-weight: bolder;
   position: absolute;
@@ -152,6 +152,7 @@ export const HeaderCarousel = styled.h1`
   align-items: center;
   color: white;
   font-size: 28px; 
+  width: fit-content;
   margin-left: 3vw;
   margin-bottom: -3.5vh;
   ${CursorSpanCarousel} {
