@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { fetchAPI } from '../services';
-import { ButtonCarrousel, HeaderCarousel, CursorSpanCarousel } from '../styles/MainStyles';
+import { ButtonCarrousel, HeaderCarousel, CursorSpanCarousel, PosterCarousel } from '../styles/MainStyles';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import { faChevronRight, faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 import AliceCarousel from 'react-alice-carousel';
@@ -36,8 +36,8 @@ function Carousel( { genre: { id, name } } ) {
 
   function galleryItems() {
     return mediasFromGenre.map((media) => (
-      <div style={{margin: '20px' }} key={ media.id }>
-        <img style={{ width: '10vw', height: '14vw' }} src={ `https://image.tmdb.org/t/p/original${media.poster_path}` } />
+      <div style={{margin: '20px', width: 'fit-content' }} key={ media.id }>
+        <PosterCarousel src={ `https://image.tmdb.org/t/p/original${media.poster_path}` } />
       </div>
     ))
   }
@@ -72,7 +72,7 @@ function Carousel( { genre: { id, name } } ) {
       <div 
         onMouseOver={() => setToggleDivCarousel(true)} 
         onMouseLeave={() => setToggleDivCarousel(false)} 
-        style={{ display: 'flex', alignItems: 'center', margin: '20px' }}
+        style={{ display: 'flex', alignItems: 'center', margin: '20px', cursor: 'pointer' }}
       >
         { renderGallery() }
       </div>

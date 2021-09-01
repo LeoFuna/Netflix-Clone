@@ -119,6 +119,15 @@ export const ButtonCarrousel = styled.button`
   }
 `;
 
+export const PosterCarousel = styled.img`
+  width: 10vw;
+  height: 14vw;
+  &:hover {
+    position: absolute;
+    border: 2px solid rgba(244,244,240,0.4);
+  }
+`;
+
 export const CursorSpanCarousel = styled.span`
   color: rgb(0,0,0);
   font-size: 0.6em;
@@ -171,5 +180,3 @@ export const HeaderCarousel = styled.h1`
     }
   }
 `;
-
-
