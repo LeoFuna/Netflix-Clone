@@ -6,7 +6,9 @@ import netflixLogo from '../images/netflix-logo.png';
 
 
 function Header() {
-  const [isVisible, setIsVisible] = useState(false)
+  const [isVisible, setIsVisible] = useState(false);
+  const [readyToCloseSearchBar, setReadyToCloseSearchBar] = useState(false);
+  const [transparencyOnHeader, setTransparecyOnHeader] = useState(true);
   const [whichIsBold, setWhichIsBold] = useState({
     inicio: true,
     series: false,
@@ -16,7 +18,13 @@ function Header() {
   });
 
   function handleSearchBarVisibility() {
-    isVisible ? setIsVisible(false) : setIsVisible(true);
+    if (isVisible) {
+      setReadyToCloseSearchBar(true);
+      setTimeout(() => setIsVisible(false), 380);
+    } else {
+      setReadyToCloseSearchBar(false);
+      setIsVisible(true);
+    }
   }
 
   function handleTargetOnClick({ target: { id } }) {
@@ -28,9 +36,19 @@ function Header() {
     })
   }
 
+  function handleHeaderTransparencyOnScroll() {
+    if (window.scrollY === 0) {
+      setTransparecyOnHeader(true)
+    } else {
+      setTransparecyOnHeader(false);
+    }
+  }
+
+  window.addEventListener('scroll', handleHeaderTransparencyOnScroll);
+
   return (
     <HeaderMainDiv>
-      <HeaderContainer>
+      <HeaderContainer transparencyOnHeader={ transparencyOnHeader }>
         <Logo src={ netflixLogo } alt="Netflix Logo" />
         <UlFromHeader>
           <LiFromHeader onClick={ handleTargetOnClick } id="inicio" isBold={ whichIsBold.inicio }>Início</LiFromHeader>
@@ -40,10 +58,10 @@ function Header() {
           <LiFromHeader onClick={ handleTargetOnClick } id="minhaLista" isBold={ whichIsBold.minhaLista }>Minha lista</LiFromHeader>
         </UlFromHeader>
       </HeaderContainer>
-      <HeaderContainerRight>
+      <HeaderContainerRight transparencyOnHeader={ transparencyOnHeader }>
         <DivSearchBar isOpen={ isVisible }>
           <FontAwesomeIcon style={{ fontSize: '1.15em', marginRight: '5px' }} onClick={ handleSearchBarVisibility } icon={ faSearch } />
-          <SearchBar placeholder="Títulos, gente e gêneros" isVisible={ isVisible } type="text" />
+          <SearchBar placeholder="Títulos, gente e gêneros" readyToCloseSearchBar={ readyToCloseSearchBar } isVisible={ isVisible } type="text" />
         </DivSearchBar>
         <ProfileAvatar />
       </HeaderContainerRight>
