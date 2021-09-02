@@ -12,11 +12,51 @@ export const Logo = styled.img`
   margin-left: 20px;
 `;
 
+const animationTransparecyHeader = keyframes`
+  0% {
+    background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 32%, rgba(0,0,0,1) 100%);
+  }
+  10% {
+    background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.95) 32%, rgba(0,0,0,0.9) 100%);
+  }
+  20% {
+    background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.90) 32%, rgba(0,0,0,0.80) 100%);
+  }
+  30% {
+    background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.85) 32%, rgba(0,0,0,0.7) 100%);
+  }
+  40% {
+    background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.80) 32%, rgba(0,0,0,0.6) 100%);
+  }
+  50% {
+    background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.7511379551820728) 32%, rgba(0,0,0,0.5) 100%);
+  }
+  60% {
+    background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.7511379551820728) 32%, rgba(0,0,0,0.4) 100%);
+  }
+  70% {
+    background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.7511379551820728) 32%, rgba(0,0,0,0.3) 100%);
+  }
+  80% {
+    background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.7511379551820728) 32%, rgba(0,0,0,0.2) 100%);
+  }
+  90% {
+    background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.7511379551820728) 32%, rgba(0,0,0,0.1) 100%);
+  }
+  100% {
+    background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.7511379551820728) 32%, rgba(0,0,0,0) 100%);
+  }
+`;
+
 export const HeaderContainer = styled.div`
   width: 47.6vw;
   padding-left: 2vw;
   background: rgb(0,0,0);
-  background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.7511379551820728) 32%, rgba(0,0,0,0) 100%);
+  animation: ${ ({ transparencyOnHeader }) => transparencyOnHeader ? animationTransparecyHeader : '' };
+  animation-duration: ${ ({ transparencyOnHeader }) => transparencyOnHeader ? '0.4s' : '' };
+  animation-timing-function: ease-in;
+  animation-fill-mode: forwards;
+  animation-iteration-count: 1;
   display: flex;
   align-items: center;
   color: white;
