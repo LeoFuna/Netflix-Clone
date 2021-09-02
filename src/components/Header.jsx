@@ -6,7 +6,8 @@ import netflixLogo from '../images/netflix-logo.png';
 
 
 function Header() {
-  const [isVisible, setIsVisible] = useState(false)
+  const [isVisible, setIsVisible] = useState(false);
+  const [readyToCloseSearchBar, setReadyToCloseSearchBar] = useState(false);
   const [whichIsBold, setWhichIsBold] = useState({
     inicio: true,
     series: false,
@@ -16,7 +17,13 @@ function Header() {
   });
 
   function handleSearchBarVisibility() {
-    isVisible ? setIsVisible(false) : setIsVisible(true);
+    if (isVisible) {
+      setReadyToCloseSearchBar(true);
+      setTimeout(() => setIsVisible(false), 380);
+    } else {
+      setReadyToCloseSearchBar(false);
+      setIsVisible(true);
+    }
   }
 
   function handleTargetOnClick({ target: { id } }) {
@@ -43,7 +50,7 @@ function Header() {
       <HeaderContainerRight>
         <DivSearchBar isOpen={ isVisible }>
           <FontAwesomeIcon style={{ fontSize: '1.15em', marginRight: '5px' }} onClick={ handleSearchBarVisibility } icon={ faSearch } />
-          <SearchBar placeholder="Títulos, gente e gêneros" isVisible={ isVisible } type="text" />
+          <SearchBar placeholder="Títulos, gente e gêneros" readyToCloseSearchBar={ readyToCloseSearchBar } isVisible={ isVisible } type="text" />
         </DivSearchBar>
         <ProfileAvatar />
       </HeaderContainerRight>

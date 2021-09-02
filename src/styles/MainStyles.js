@@ -46,12 +46,34 @@ export const DivSearchBar = styled.div`
   display: flex;
 `;
 
+const SearchBarAnimationOpen = keyframes`
+  from {
+    width: 10px;
+  }
+  to {
+    width: 250px;
+  }
+`;
+
+const SearchBarAnimationClose = keyframes`
+  from {
+    width: 250px;
+  }
+  to {
+    width: 10px;
+  }
+`;
+
 export const SearchBar = styled.input`
   display: ${({ isVisible }) => isVisible ? '' : 'none' };
   background-color: inherit;
   color: white;
   border: none;
-  width: 250px;
+  animation: ${ SearchBarAnimationOpen };
+  animation: ${ ({ readyToCloseSearchBar }) => readyToCloseSearchBar ? SearchBarAnimationClose : '' };
+  animation-duration: 0.6s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: 1;
   &:focus {
     outline: none;
   }
