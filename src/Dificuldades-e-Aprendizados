@@ -11,3 +11,4 @@ Dificuldades:
   - Estruturação de um carrosel similar ao da Netflix (Usado biblioteca Alice-Carousel)
   - Animações usando CSS para elementos da paǵina
   - Responsividade para telas desktop menores
+  - Tratamento dos dados da API de filmes pois alguns dados vinham faltando e ocasionavam quebra da página.
