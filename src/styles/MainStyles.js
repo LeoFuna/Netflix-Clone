@@ -3,6 +3,7 @@ import styled, { keyframes } from "styled-components";
 export const HeaderMainDiv = styled.header`
   display: flex;
   position: fixed;
+  height: 90px;
   background-color: transparent;
   z-index: 2;
 `;
@@ -153,9 +154,27 @@ export const GradientOnBannerContainer = styled.div`
 `;
 
 export const HeroBannerDetails = styled.div`
-  font-size: 1.6em;
+  margin-top: 90px;
+  font-size: 1.5em;
   margin-left: 4vw;
   width: 37vw;
+`;
+
+export const HeroBannerTitle = styled.h1`
+  color: white;
+  text-transform: capitalize;
+  font-size: 2.7em;
+`;
+
+export const HeroBannerOverview = styled.p`
+  color: white;
+  font-size: 0.83em;
+`;
+
+export const HeroBannerVotes = styled.p`
+  color: #46d369;
+  font-size: 1em;
+  font-weight: bolder;
 `;
 
 export const HeroBannerButtons = styled.button`

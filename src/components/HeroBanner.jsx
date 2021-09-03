@@ -1,6 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { fetchAPI }  from '../services';
-import { HeroBannerDetails, HeroBannerImage, GradientOnBannerContainer, HeroBannerButtons } from '../styles/MainStyles';
+import { 
+  HeroBannerDetails, 
+  HeroBannerImage, 
+  GradientOnBannerContainer, 
+  HeroBannerButtons, 
+  HeroBannerTitle, 
+  HeroBannerOverview, 
+  HeroBannerVotes } from '../styles/MainStyles';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import { faInfoCircle, faPlay } from '@fortawesome/free-solid-svg-icons';
 
@@ -16,21 +23,21 @@ function HeroBanner() {
       { mediaBackground.backdrop_path ? 
       <HeroBannerImage image={`https://image.tmdb.org/t/p/original${mediaBackground['backdrop_path']}`} >
         <GradientOnBannerContainer>
-        <HeroBannerDetails>
-          <h1 style={{color: 'white'}}>{ mediaBackground.title ? mediaBackground.title : mediaBackground.name }</h1>
-          <p style={{color: 'gray'}}>{ mediaBackground.overview }</p>
-          <p style={{color: '#158007', fontSize: '16px', fontWeight: 'bolder'}}>{ mediaBackground.vote_average } pontos</p>
-          <div style={{ display: 'flex' }}>
-            <HeroBannerButtons type="button" setWidth='200px' isDetailButton={false}>
-              <FontAwesomeIcon icon={ faPlay } />
-              <p>Assistir</p>
-            </HeroBannerButtons>
-            <HeroBannerButtons type="button" setWidth='250px' setMarginLeft='12px' isDetailButton={true}>
-              <FontAwesomeIcon icon={ faInfoCircle } />
-              <p>Mais informações</p>
-            </HeroBannerButtons>
-          </div>
-        </HeroBannerDetails>
+          <HeroBannerDetails>
+            <HeroBannerTitle>{ mediaBackground.title ? mediaBackground.title : mediaBackground.name }</HeroBannerTitle>
+            <HeroBannerOverview>{ mediaBackground.overview }</HeroBannerOverview>
+            <HeroBannerVotes>{ mediaBackground.vote_average } pontos</HeroBannerVotes>
+            <div style={{ display: 'flex' }}>
+              <HeroBannerButtons type="button" setWidth='200px' isDetailButton={false}>
+                <FontAwesomeIcon icon={ faPlay } />
+                <p>Assistir</p>
+              </HeroBannerButtons>
+              <HeroBannerButtons type="button" setWidth='250px' setMarginLeft='12px' isDetailButton={true}>
+                <FontAwesomeIcon icon={ faInfoCircle } />
+                <p>Mais informações</p>
+              </HeroBannerButtons>
+            </div>
+          </HeroBannerDetails>
         </GradientOnBannerContainer>
       </HeroBannerImage> : <p>LOADING...</p> }
     </>
