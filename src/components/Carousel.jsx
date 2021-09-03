@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { fetchAPI } from '../services';
-import { ButtonCarrousel, HeaderCarousel, CursorSpanCarousel, PosterCarousel } from '../styles/MainStyles';
+import { ButtonCarrousel, HeaderCarousel, CursorSpanCarousel, PosterCarousel, MainDivCarousel } from '../styles/MainStyles';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import { faChevronRight, faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 import AliceCarousel from 'react-alice-carousel';
@@ -12,15 +12,32 @@ function Carousel( { genre: { id, name } } ) {
   const [toggleCursor, setToggleCursor] = useState(false);
   const [toggleDivCarousel, setToggleDivCarousel] = useState(false);
   useEffect( async () => {
-    const mediasFromApi = await fetchAPI(`/discover/movie?with_genres=${ id }&sort_by=popularity.desc`);
-    const filteredMedia = mediasFromApi.results.filter((media) => media.poster_path !== null && media.original_language !== 'jp')
-    const sevenMedias = []
-    let index = 0
-    do {
-      sevenMedias.push(filteredMedia[index]);
-      index += 1;
-    } while ( index < 9 )
-    setMediaFromGenre(sevenMedias)
+    const wantSeries = true;
+    const wantMovies = false;
+    let mediasFromApiUnsorted;
+    if (wantSeries) {
+      const mediasFromApiSeries = await fetchAPI(`/discover/tv?with_genres=${ id }&sort_by=popularity.desc`);
+      mediasFromApiUnsorted = [...mediasFromApiSeries.results]
+    }
+    if (wantMovies) {
+      const mediasFromApiMovie = await fetchAPI(`/discover/movie?with_genres=${ id }&sort_by=popularity.desc`);
+      mediasFromApiUnsorted = [...mediasFromApiMovie.results]
+    }
+
+    const mediasFromApi = mediasFromApiUnsorted.sort((element1, element2) => element1.popularity - element2.popularity);
+    const filteredMedia = mediasFromApi.filter((media) => media.poster_path !== null && media.original_language !== 'jp')
+
+    if (filteredMedia.length > 8) {
+      const sevenMedias = []
+      let index = 0
+      do {
+        sevenMedias.push(filteredMedia[index]);
+        index += 1;
+      } while ( index < 9 )
+      setMediaFromGenre(sevenMedias)
+    } else {
+      setMediaFromGenre([])
+    }
   }, [])
 
   const responsive = {
@@ -34,12 +51,12 @@ function Carousel( { genre: { id, name } } ) {
     1260: { items: 8 },
   };
 
-  function galleryItems() {
+  function galleryItems() {  
     return mediasFromGenre.map((media) => (
       <div style={{margin: '20px', width: 'fit-content' }} key={ media.id }>
         <PosterCarousel src={ `https://image.tmdb.org/t/p/original${media.poster_path}` } />
       </div>
-    ))
+    ));
   }
   
   const onSlideChanged = (event) => {
@@ -58,26 +75,28 @@ function Carousel( { genre: { id, name } } ) {
     >{ galleryItems() }</AliceCarousel>
   }
 
-
-  return (
-    <div style={{ display: 'flex', flexDirection:'column', width: '99vw',  backgroundColor: 'black' }}>
-      <HeaderCarousel 
-        onMouseOver={() => setToggleCursor(true) }
-        onMouseLeave={ () => setTimeout(() => setToggleCursor(false), 500) }
-        toggleCursor={ toggleCursor }
-      >
-        { name }
-        <CursorSpanCarousel>Ver tudo <FontAwesomeIcon icon={ faChevronRight } /></CursorSpanCarousel>
-      </HeaderCarousel>
-      <div 
-        onMouseOver={() => setToggleDivCarousel(true)} 
-        onMouseLeave={() => setToggleDivCarousel(false)} 
-        style={{ display: 'flex', alignItems: 'center', margin: '20px', cursor: 'pointer' }}
-      >
-        { renderGallery() }
-      </div>
-    </div>
-  )
+  if (mediasFromGenre.length > 8) {
+    return (
+      <MainDivCarousel>
+        <HeaderCarousel 
+          onMouseOver={() => setToggleCursor(true) }
+          onMouseLeave={ () => setTimeout(() => setToggleCursor(false), 500) }
+          toggleCursor={ toggleCursor }
+        >
+          { name }
+          <CursorSpanCarousel>Ver tudo <FontAwesomeIcon icon={ faChevronRight } /></CursorSpanCarousel>
+        </HeaderCarousel>
+        <div 
+          onMouseOver={() => setToggleDivCarousel(true)} 
+          onMouseLeave={() => setToggleDivCarousel(false)} 
+          style={{ display: 'flex', alignItems: 'center', margin: '20px', cursor: 'pointer' }}
+        >
+          { renderGallery() }
+        </div>
+      </MainDivCarousel>
+    )
+  }
+  return(<div />)
 }
 
 Carousel.propTypes = {

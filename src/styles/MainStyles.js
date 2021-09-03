@@ -3,6 +3,7 @@ import styled, { keyframes } from "styled-components";
 export const HeaderMainDiv = styled.header`
   display: flex;
   position: fixed;
+  height: 90px;
   background-color: transparent;
   z-index: 2;
 `;
@@ -10,6 +11,7 @@ export const HeaderMainDiv = styled.header`
 export const Logo = styled.img`
   width: 100px;
   margin-left: 20px;
+  cursor: pointer;
 `;
 
 const animationTransparecyHeader = keyframes`
@@ -76,6 +78,10 @@ export const LiFromHeader = styled.li`
   font-weight: ${({ isBold }) => isBold ? "900" : "initial" };
   list-style: none;
   margin: 15px;
+  cursor: pointer;
+  &:hover {
+    color: rgba(255,255,255,0.9);
+  }
 `;
 
 export const DivSearchBar = styled.div`
@@ -132,8 +138,14 @@ export const HeroBannerImage = styled.div`
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 50% 5%;
-    width: 99vw;
+    width: 98.95vw;
     height: 100vh;
+    @media only screen and (min-width: 1680px) {
+    width: 99.2vw;
+    }
+    @media only screen and (min-width: 1440px) and (max-width: 1680px) {
+    width: 99.1vw;
+    }
 `;
 
 export const GradientOnBannerContainer = styled.div`
@@ -147,9 +159,66 @@ export const GradientOnBannerContainer = styled.div`
 `;
 
 export const HeroBannerDetails = styled.div`
-  font-size: 1.6em;
+  margin-top: 90px;
+  font-size: 1.5em;
   margin-left: 4vw;
   width: 37vw;
+`;
+
+export const HeroBannerTitle = styled.h1`
+  color: white;
+  text-transform: capitalize;
+  font-size: 2.7em;
+`;
+
+export const HeroBannerOverview = styled.p`
+  color: white;
+  font-size: 0.83em;
+`;
+
+export const HeroBannerVotes = styled.p`
+  color: #46d369;
+  font-size: 1em;
+  font-weight: bolder;
+`;
+
+export const HeroBannerButtons = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 55px;
+  font-size: 0.8em;
+  font-weight: bolder;
+  margin-left: ${({ setMarginLeft }) => setMarginLeft};
+  width: ${({ setWidth }) => setWidth};
+  background-color: ${({isDetailButton}) => isDetailButton ? 'rgba(109, 109, 110, 0.7)' : 'white' };
+  color: ${({isDetailButton}) => isDetailButton ? 'white' : 'black' };
+  border-radius: 8px;
+  border-width: 2px;
+  border: 2px solid rgba(0,0,0,0);
+  &:focus {
+    border: 2px solid rgba(0,0,0,1);
+    box-shadow: 0 0 0 1.5pt white;
+  }
+  &:hover {
+    background-color: ${({isDetailButton}) => isDetailButton ? 'rgba(109, 109, 110, 0.6)' : 'rgba(255,255,255,0.8)'};
+  }
+  & > p {
+    margin-left: 12px;
+  }
+`;
+
+export const MainDivCarousel = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 98.95vw;
+  background-color: black;
+  @media only screen and (min-width: 1680px) {
+  width: 99.2vw;
+  }
+  @media only screen and (min-width: 1440px) and (max-width: 1680px) {
+  width: 99.1vw;
+  }
 `;
 
 export const ButtonCarrousel = styled.button`
