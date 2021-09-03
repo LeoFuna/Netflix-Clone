@@ -176,6 +176,9 @@ export const HeroBannerButtons = styled.button`
     border: 2px solid rgba(0,0,0,1);
     box-shadow: 0 0 0 1.5pt white;
   }
+  &:hover {
+    background-color: ${({isDetailButton}) => isDetailButton ? 'rgba(109, 109, 110, 0.6)' : 'rgba(255,255,255,0.8)'};
+  }
   & > p {
     margin-left: 12px;
   }
