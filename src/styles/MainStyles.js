@@ -77,6 +77,7 @@ export const LiFromHeader = styled.li`
   font-weight: ${({ isBold }) => isBold ? "900" : "initial" };
   list-style: none;
   margin: 15px;
+  cursor: pointer;
 `;
 
 export const DivSearchBar = styled.div`

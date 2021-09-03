@@ -29,11 +29,13 @@ function Header() {
 
   function handleTargetOnClick({ target: { id } }) {
     const previousSelectedLi = Object.entries(whichIsBold).filter((li) => li[1] === true);
-    setWhichIsBold({
-      ...whichIsBold,
-      [id]: true,
-      [previousSelectedLi[0][0]]: false,
-    })
+    if (id !== previousSelectedLi[0][0]) {
+      setWhichIsBold({
+        ...whichIsBold,
+        [id]: true,
+        [previousSelectedLi[0][0]]: false,
+      })
+    }
   }
 
   function handleHeaderTransparencyOnScroll() {
