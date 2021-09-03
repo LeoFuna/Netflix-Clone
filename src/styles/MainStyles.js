@@ -78,6 +78,9 @@ export const LiFromHeader = styled.li`
   list-style: none;
   margin: 15px;
   cursor: pointer;
+  &:hover {
+    color: rgba(255,255,255,0.9);
+  }
 `;
 
 export const DivSearchBar = styled.div`
