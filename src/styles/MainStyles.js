@@ -11,6 +11,7 @@ export const HeaderMainDiv = styled.header`
 export const Logo = styled.img`
   width: 100px;
   margin-left: 20px;
+  cursor: pointer;
 `;
 
 const animationTransparecyHeader = keyframes`
