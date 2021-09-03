@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { fetchAPI } from '../services';
-import { ButtonCarrousel, HeaderCarousel, CursorSpanCarousel, PosterCarousel } from '../styles/MainStyles';
+import { ButtonCarrousel, HeaderCarousel, CursorSpanCarousel, PosterCarousel, MainDivCarousel } from '../styles/MainStyles';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import { faChevronRight, faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 import AliceCarousel from 'react-alice-carousel';
@@ -60,7 +60,7 @@ function Carousel( { genre: { id, name } } ) {
 
 
   return (
-    <div style={{ display: 'flex', flexDirection:'column', width: '99.2vw',  backgroundColor: 'black' }}>
+    <MainDivCarousel>
       <HeaderCarousel 
         onMouseOver={() => setToggleCursor(true) }
         onMouseLeave={ () => setTimeout(() => setToggleCursor(false), 500) }
@@ -76,7 +76,7 @@ function Carousel( { genre: { id, name } } ) {
       >
         { renderGallery() }
       </div>
-    </div>
+    </MainDivCarousel>
   )
 }
 

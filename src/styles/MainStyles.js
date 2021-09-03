@@ -132,8 +132,14 @@ export const HeroBannerImage = styled.div`
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 50% 5%;
-    width: 99.2vw;
+    width: 98.95vw;
     height: 100vh;
+    @media only screen and (min-width: 1680px) {
+    width: 99.2vw;
+    }
+    @media only screen and (min-width: 1440px) and (max-width: 1680px) {
+    width: 99.1vw;
+    }
 `;
 
 export const GradientOnBannerContainer = styled.div`
@@ -150,6 +156,19 @@ export const HeroBannerDetails = styled.div`
   font-size: 1.6em;
   margin-left: 4vw;
   width: 37vw;
+`;
+
+export const MainDivCarousel = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 98.95vw;
+  background-color: black;
+  @media only screen and (min-width: 1680px) {
+  width: 99.2vw;
+  }
+  @media only screen and (min-width: 1440px) and (max-width: 1680px) {
+  width: 99.1vw;
+  }
 `;
 
 export const ButtonCarrousel = styled.button`
