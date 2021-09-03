@@ -132,7 +132,7 @@ export const HeroBannerImage = styled.div`
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 50% 5%;
-    width: 99vw;
+    width: 99.2vw;
     height: 100vh;
 `;
 

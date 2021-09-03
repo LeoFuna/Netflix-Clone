@@ -60,7 +60,7 @@ function Carousel( { genre: { id, name } } ) {
 
 
   return (
-    <div style={{ display: 'flex', flexDirection:'column', width: '99vw',  backgroundColor: 'black' }}>
+    <div style={{ display: 'flex', flexDirection:'column', width: '99.2vw',  backgroundColor: 'black' }}>
       <HeaderCarousel 
         onMouseOver={() => setToggleCursor(true) }
         onMouseLeave={ () => setTimeout(() => setToggleCursor(false), 500) }
