@@ -158,6 +158,20 @@ export const HeroBannerDetails = styled.div`
   width: 37vw;
 `;
 
+export const HeroBannerButtons = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 55px;
+  font-size: 0.8em;
+  font-weight: bolder;
+  margin-left: ${({ setMarginLeft }) => setMarginLeft};
+  width: ${({ setWidth }) => setWidth};
+  & > p {
+    margin-left: 12px;
+  }
+`;
+
 export const MainDivCarousel = styled.div`
   display: flex;
   flex-direction: column;

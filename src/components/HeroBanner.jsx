@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { fetchAPI }  from '../services';
-import { HeroBannerDetails, HeroBannerImage, GradientOnBannerContainer } from '../styles/MainStyles'
+import { HeroBannerDetails, HeroBannerImage, GradientOnBannerContainer, HeroBannerButtons } from '../styles/MainStyles';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import { faInfoCircle, faPlay } from '@fortawesome/free-solid-svg-icons';
 
 function HeroBanner() {
   const [mediaBackground, setMediaBackground] = useState({})
@@ -18,8 +20,16 @@ function HeroBanner() {
           <h1 style={{color: 'white'}}>{ mediaBackground.title ? mediaBackground.title : mediaBackground.name }</h1>
           <p style={{color: 'gray'}}>{ mediaBackground.overview }</p>
           <p style={{color: '#158007', fontSize: '16px', fontWeight: 'bolder'}}>{ mediaBackground.vote_average } pontos</p>
-          <button type="button">ASISTIR</button>
-          <button type="button">MAINS INFORMAÇÕES</button>
+          <div style={{ display: 'flex' }}>
+            <HeroBannerButtons type="button" setWidth='200px'>
+              <FontAwesomeIcon icon={ faPlay } />
+              <p>Assistir</p>
+            </HeroBannerButtons>
+            <HeroBannerButtons type="button" setWidth='250px' setMarginLeft='12px'>
+              <FontAwesomeIcon icon={ faInfoCircle } />
+              <p>Mais informações</p>
+            </HeroBannerButtons>
+          </div>
         </HeroBannerDetails>
         </GradientOnBannerContainer>
       </HeroBannerImage> : <p>LOADING...</p> }
