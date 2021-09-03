@@ -21,11 +21,11 @@ function HeroBanner() {
           <p style={{color: 'gray'}}>{ mediaBackground.overview }</p>
           <p style={{color: '#158007', fontSize: '16px', fontWeight: 'bolder'}}>{ mediaBackground.vote_average } pontos</p>
           <div style={{ display: 'flex' }}>
-            <HeroBannerButtons type="button" setWidth='200px'>
+            <HeroBannerButtons type="button" setWidth='200px' isDetailButton={false}>
               <FontAwesomeIcon icon={ faPlay } />
               <p>Assistir</p>
             </HeroBannerButtons>
-            <HeroBannerButtons type="button" setWidth='250px' setMarginLeft='12px'>
+            <HeroBannerButtons type="button" setWidth='250px' setMarginLeft='12px' isDetailButton={true}>
               <FontAwesomeIcon icon={ faInfoCircle } />
               <p>Mais informações</p>
             </HeroBannerButtons>

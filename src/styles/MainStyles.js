@@ -167,6 +167,15 @@ export const HeroBannerButtons = styled.button`
   font-weight: bolder;
   margin-left: ${({ setMarginLeft }) => setMarginLeft};
   width: ${({ setWidth }) => setWidth};
+  background-color: ${({isDetailButton}) => isDetailButton ? 'rgba(109, 109, 110, 0.7)' : 'white' };
+  color: ${({isDetailButton}) => isDetailButton ? 'white' : 'black' };
+  border-radius: 8px;
+  border-width: 2px;
+  border: 2px solid rgba(0,0,0,0);
+  &:focus {
+    border: 2px solid rgba(0,0,0,1);
+    box-shadow: 0 0 0 1.5pt white;
+  }
   & > p {
     margin-left: 12px;
   }
