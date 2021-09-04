@@ -13,8 +13,7 @@ function Header() {
     inicio: true,
     series: false,
     filmes: false,
-    bombando: false,
-    minhaLista: false,
+    'minha Lista': false,
   });
 
   function handleSearchBarVisibility() {
@@ -53,11 +52,9 @@ function Header() {
       <HeaderContainer transparencyOnHeader={ transparencyOnHeader }>
         <Logo src={ netflixLogo } alt="Netflix Logo" />
         <UlFromHeader>
-          <LiFromHeader onClick={ handleTargetOnClick } id="inicio" isBold={ whichIsBold.inicio }>Início</LiFromHeader>
-          <LiFromHeader onClick={ handleTargetOnClick } id="series" isBold={ whichIsBold.series }>Séries</LiFromHeader>
-          <LiFromHeader onClick={ handleTargetOnClick } id="filmes" isBold={ whichIsBold.filmes }>Filmes</LiFromHeader>
-          <LiFromHeader onClick={ handleTargetOnClick } id="bombando" isBold={ whichIsBold.bombando }>Bombando</LiFromHeader>
-          <LiFromHeader onClick={ handleTargetOnClick } id="minhaLista" isBold={ whichIsBold.minhaLista }>Minha lista</LiFromHeader>
+          { Object.entries(whichIsBold).map(
+            (entry) => <LiFromHeader onClick={ handleTargetOnClick } key={ entry[0] } id={ entry[0] } isBold={ entry[1] }>{entry[0]}</LiFromHeader> 
+          )}
         </UlFromHeader>
       </HeaderContainer>
       <HeaderContainerRight transparencyOnHeader={ transparencyOnHeader }>

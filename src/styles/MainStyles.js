@@ -76,6 +76,7 @@ export const UlFromHeader = styled.ul`
 
 export const LiFromHeader = styled.li`
   font-weight: ${({ isBold }) => isBold ? "900" : "initial" };
+  text-transform: capitalize;
   list-style: none;
   margin: 15px;
   cursor: pointer;
