@@ -8,7 +8,7 @@ import "react-alice-carousel/lib/alice-carousel.css";
 function App() {
   return (
     <NetflixProvider>
-        <Main />  
+        <Main />
     </NetflixProvider>
   );
 }

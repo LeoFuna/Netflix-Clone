@@ -16,12 +16,12 @@ function HeroBanner({ mediaType, selectedNewBanner }) {
   const [mediaBackground, setMediaBackground] = useState({})
 
   useEffect(async () => {
-    if (selectedNewBanner !== 0) {
+    if (selectedNewBanner.serieOrMovie === '') {
       const moviesFromApi = await fetchAPI(`/trending/${mediaType}/week?`);
       setMediaBackground(moviesFromApi.results[0]);
     } else {
-      const moviesFromApi = await fetchAPI(`/trending/${mediaType}/week?`);
-      setMediaBackground(moviesFromApi.results[0]);
+      const moviesFromApi = await fetchAPI(`/${selectedNewBanner.serieOrMovie}/${selectedNewBanner.id}?`);
+      setMediaBackground(moviesFromApi);
     }
   }, [mediaType, selectedNewBanner]);
   return (
@@ -52,7 +52,10 @@ function HeroBanner({ mediaType, selectedNewBanner }) {
 
 HeroBanner.propTypes = {
   mediaType: PropTypes.string.isRequired,
-  selectedNewBanner: PropTypes.number.isRequired
+  selectedNewBanner: PropTypes.shape({
+    id: PropTypes.number,
+    serieOrMovie: PropTypes.string
+  }).isRequired
 };
 
 export default HeroBanner;

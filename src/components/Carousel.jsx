@@ -15,7 +15,7 @@ function Carousel( { genre: { id, name }, selectedLi: { wantSeries, wantMovies }
     let mediasFromApiUnsorted = [];
     if (wantSeries) {
       const mediasFromApiSeries = await fetchAPI(`/discover/tv?with_genres=${ id }&sort_by=popularity.desc`);
-      const mediaReturned = mediasFromApiSeries.results.map((serie) => Object.assign(serie, {serieOrMovie: 'serie'}));
+      const mediaReturned = mediasFromApiSeries.results.map((serie) => Object.assign(serie, {serieOrMovie: 'tv'}));
       mediasFromApiUnsorted = [...mediaReturned];
     }
     if (wantMovies) {

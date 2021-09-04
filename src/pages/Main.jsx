@@ -8,39 +8,36 @@ function Main() {
   const [genres, setGenres] = useState([]);
   const [selectedLi, setSelectedLi] = useState({ wantSeries: true, wantMovies: true });
   const [mediaType, setMediaType] = useState('all');
-  const [selectedNewBanner, setSelectedNewBanner] = useState(0);
+  const [selectedNewBanner, setSelectedNewBanner] = useState({ id: 0, serieOrMovie: '' });
 
   function handleSelectedLi(nameLi) {
+    setSelectedNewBanner({ id:0 , serieOrMovie: ''});
     switch (nameLi) {
       case 'inicio':
           setSelectedLi({ wantSeries: true, wantMovies: true });
           setMediaType('all');
-          setSelectedNewBanner(0);
         break
       case 'series':
           setSelectedLi({ wantSeries: true, wantMovies: false });
           setMediaType('tv');
-          setSelectedNewBanner(0);
         break
       case 'filmes':
           setSelectedLi({ wantSeries: false, wantMovies: true });
           setMediaType('movie');
-          setSelectedNewBanner(0);
         break
       default:
           setSelectedLi({ wantSeries: true, wantMovies: true }); // ainda ajustar para lista de desejos
           setMediaType('all');
-          setSelectedNewBanner(0);
     }
   }
 
   function handleSelectedNewBanner(id, serieOrMovie) {
-    console.log(serieOrMovie)
-    setSelectedNewBanner(id);
+    setSelectedNewBanner({ id, serieOrMovie });
   }
 
   useEffect(async () => {
     const genresFromApi = await fetchAPI('/genre/movie/list?');
+    // const dataFilterPerQuery = await fetchAPI('/search/multi?query=la%20casa%20de%20papel&page=1&include_adult=false'); usar query parecida com essa para fazer a query
     setGenres(genresFromApi.genres);
   }, []);
   

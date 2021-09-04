@@ -10,6 +10,7 @@ function Header({ handleSelectedLi }) {
   const [isVisible, setIsVisible] = useState(false);
   const [readyToCloseSearchBar, setReadyToCloseSearchBar] = useState(false);
   const [transparencyOnHeader, setTransparecyOnHeader] = useState(true);
+  const [query, setQuery] = useState('');
   const [whichIsBold, setWhichIsBold] = useState({
     inicio: true,
     series: false,
@@ -49,6 +50,14 @@ function Header({ handleSelectedLi }) {
 
   window.addEventListener('scroll', handleHeaderTransparencyOnScroll);
 
+  function handleSearchBar({ target }) {
+    setQuery(target.value);
+  }
+
+  // useEffect(() => {
+
+  // }, [query]) chamar a função de busca à api toda vez que query for alterado e não for ''
+
   return (
     <HeaderMainDiv>
       <HeaderContainer transparencyOnHeader={ transparencyOnHeader }>
@@ -62,7 +71,7 @@ function Header({ handleSelectedLi }) {
       <HeaderContainerRight transparencyOnHeader={ transparencyOnHeader }>
         <DivSearchBar isOpen={ isVisible }>
           <FontAwesomeIcon style={{ fontSize: '1.15em', marginRight: '5px' }} onClick={ handleSearchBarVisibility } icon={ faSearch } />
-          <SearchBar placeholder="Títulos, gente e gêneros" readyToCloseSearchBar={ readyToCloseSearchBar } isVisible={ isVisible } type="text" />
+          <SearchBar placeholder="Títulos, gente e gêneros" value={query} onChange={handleSearchBar} readyToCloseSearchBar={ readyToCloseSearchBar } isVisible={ isVisible } type="text" />
         </DivSearchBar>
         <ProfileAvatar />
       </HeaderContainerRight>
