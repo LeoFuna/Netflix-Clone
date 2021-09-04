@@ -6,24 +6,22 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import { faChevronRight, faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 import AliceCarousel from 'react-alice-carousel';
 
-function Carousel( { genre: { id, name } } ) {
+function Carousel( { genre: { id, name }, selectedLi: { wantSeries, wantMovies } } ) {
   const [mediasFromGenre, setMediaFromGenre] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [toggleCursor, setToggleCursor] = useState(false);
   const [toggleDivCarousel, setToggleDivCarousel] = useState(false);
   useEffect( async () => {
-    const wantSeries = true;
-    const wantMovies = false;
-    let mediasFromApiUnsorted;
+    let mediasFromApiUnsorted = [];
     if (wantSeries) {
       const mediasFromApiSeries = await fetchAPI(`/discover/tv?with_genres=${ id }&sort_by=popularity.desc`);
-      mediasFromApiUnsorted = [...mediasFromApiSeries.results]
+      mediasFromApiUnsorted = [...mediasFromApiSeries.results];
     }
     if (wantMovies) {
       const mediasFromApiMovie = await fetchAPI(`/discover/movie?with_genres=${ id }&sort_by=popularity.desc`);
-      mediasFromApiUnsorted = [...mediasFromApiMovie.results]
+      mediasFromApiUnsorted = [...mediasFromApiUnsorted, ...mediasFromApiMovie.results];
     }
-
+    
     const mediasFromApi = mediasFromApiUnsorted.sort((element1, element2) => element1.popularity - element2.popularity);
     const filteredMedia = mediasFromApi.filter((media) => media.poster_path !== null && media.original_language !== 'jp')
 
@@ -38,7 +36,7 @@ function Carousel( { genre: { id, name } } ) {
     } else {
       setMediaFromGenre([])
     }
-  }, [])
+  }, [wantSeries, wantMovies]);
 
   const responsive = {
     0: { items: 1 },
@@ -103,6 +101,10 @@ Carousel.propTypes = {
   genre: PropTypes.shape({
     id: PropTypes.number,
     name: PropTypes.string,
+  }).isRequired,
+  selectedLi: PropTypes.shape({
+    wantSeries: PropTypes.bool,
+    wantMovies: PropTypes.bool
   }).isRequired
 };
 

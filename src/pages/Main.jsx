@@ -6,6 +6,24 @@ import { fetchAPI } from "../services";
 
 function Main() {
   const [genres, setGenres] = useState([]);
+  const [selectedLi, setSelectedLi] = useState({ wantSeries: true, wantMovies: true });
+
+  function handleSelectedLi(nameLi) {
+    console.log(nameLi);
+    switch (nameLi) {
+      case 'inicio':
+          setSelectedLi({ wantSeries: true, wantMovies: true });
+        break
+      case 'series':
+          setSelectedLi({ wantSeries: true, wantMovies: false });
+        break
+      case 'filmes':
+          setSelectedLi({ wantSeries: false, wantMovies: true });
+        break
+      default:
+          setSelectedLi({ wantSeries: true, wantMovies: true }); // ainda ajustar para lista de desejos
+    }
+  }
 
   useEffect(async () => {
     const genresFromApi = await fetchAPI('/genre/movie/list?');
@@ -15,9 +33,9 @@ function Main() {
   if (genres.length !== 0) {
     return (
       <div>
-        <Header />
+        <Header handleSelectedLi={ handleSelectedLi } />
         <HeroBanner />
-        {genres.map((genre) => <Carousel key={ genre.id } genre={ genre } /> )}
+        {genres.map((genre) => <Carousel selectedLi={ selectedLi } key={ genre.id } genre={ genre } /> )}
       </div>
     )
   }

@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { Logo, HeaderContainer, HeaderMainDiv, UlFromHeader, LiFromHeader, SearchBar, HeaderContainerRight, DivSearchBar, ProfileAvatar } from '../styles/MainStyles';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import netflixLogo from '../images/netflix-logo.png';
 
 
-function Header() {
+function Header({ handleSelectedLi }) {
   const [isVisible, setIsVisible] = useState(false);
   const [readyToCloseSearchBar, setReadyToCloseSearchBar] = useState(false);
   const [transparencyOnHeader, setTransparecyOnHeader] = useState(true);
@@ -35,6 +36,7 @@ function Header() {
         [previousSelectedLi[0][0]]: false,
       })
     }
+    handleSelectedLi(id);
   }
 
   function handleHeaderTransparencyOnScroll() {
@@ -67,5 +69,9 @@ function Header() {
     </HeaderMainDiv>
   )
 }
+
+Header.propTypes = {
+  handleSelectedLi: PropTypes.func.isRequired,
+};
 
 export default Header;
