@@ -7,21 +7,25 @@ import { fetchAPI } from "../services";
 function Main() {
   const [genres, setGenres] = useState([]);
   const [selectedLi, setSelectedLi] = useState({ wantSeries: true, wantMovies: true });
+  const [mediaType, setMediaType] = useState('all');
 
   function handleSelectedLi(nameLi) {
-    console.log(nameLi);
     switch (nameLi) {
       case 'inicio':
           setSelectedLi({ wantSeries: true, wantMovies: true });
+          setMediaType('all');
         break
       case 'series':
           setSelectedLi({ wantSeries: true, wantMovies: false });
+          setMediaType('tv');
         break
       case 'filmes':
           setSelectedLi({ wantSeries: false, wantMovies: true });
+          setMediaType('movie');
         break
       default:
           setSelectedLi({ wantSeries: true, wantMovies: true }); // ainda ajustar para lista de desejos
+          setMediaType('all');
     }
   }
 
@@ -34,7 +38,7 @@ function Main() {
     return (
       <div>
         <Header handleSelectedLi={ handleSelectedLi } />
-        <HeroBanner />
+        <HeroBanner mediaType={ mediaType } />
         {genres.map((genre) => <Carousel selectedLi={ selectedLi } key={ genre.id } genre={ genre } /> )}
       </div>
     )

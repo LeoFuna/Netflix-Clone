@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import { fetchAPI }  from '../services';
 import { 
   HeroBannerDetails, 
@@ -11,13 +12,13 @@ import {
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import { faInfoCircle, faPlay } from '@fortawesome/free-solid-svg-icons';
 
-function HeroBanner() {
+function HeroBanner({ mediaType }) {
   const [mediaBackground, setMediaBackground] = useState({})
 
   useEffect(async () => {
-    const moviesFromApi = await fetchAPI('/trending/all/week?')
+    const moviesFromApi = await fetchAPI(`/trending/${mediaType}/week?`)
     setMediaBackground(moviesFromApi.results[0])
-  }, []);
+  }, [mediaType]);
   return (
     <>
       { mediaBackground.backdrop_path ? 
@@ -43,5 +44,9 @@ function HeroBanner() {
     </>
   )
 }
+
+HeroBanner.propTypes = {
+  mediaType: PropTypes.string.isRequired
+};
 
 export default HeroBanner;

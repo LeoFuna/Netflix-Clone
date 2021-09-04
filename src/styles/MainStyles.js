@@ -140,7 +140,7 @@ export const HeroBannerImage = styled.div`
     background-size: cover;
     background-position: 50% 5%;
     width: 98.95vw;
-    height: 100vh;
+    height: 960px;
     @media only screen and (min-width: 1680px) {
     width: 99.2vw;
     }
