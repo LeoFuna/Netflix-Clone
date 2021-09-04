@@ -6,7 +6,7 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import { faChevronRight, faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 import AliceCarousel from 'react-alice-carousel';
 
-function Carousel( { genre: { id, name }, selectedLi: { wantSeries, wantMovies } } ) {
+function Carousel( { genre: { id, name }, selectedLi: { wantSeries, wantMovies }, handleSelectedNewBanner } ) {
   const [mediasFromGenre, setMediaFromGenre] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [toggleCursor, setToggleCursor] = useState(false);
@@ -15,11 +15,13 @@ function Carousel( { genre: { id, name }, selectedLi: { wantSeries, wantMovies }
     let mediasFromApiUnsorted = [];
     if (wantSeries) {
       const mediasFromApiSeries = await fetchAPI(`/discover/tv?with_genres=${ id }&sort_by=popularity.desc`);
-      mediasFromApiUnsorted = [...mediasFromApiSeries.results];
+      const mediaReturned = mediasFromApiSeries.results.map((serie) => Object.assign(serie, {serieOrMovie: 'serie'}));
+      mediasFromApiUnsorted = [...mediaReturned];
     }
     if (wantMovies) {
       const mediasFromApiMovie = await fetchAPI(`/discover/movie?with_genres=${ id }&sort_by=popularity.desc`);
-      mediasFromApiUnsorted = [...mediasFromApiUnsorted, ...mediasFromApiMovie.results];
+      const mediaReturned = mediasFromApiMovie.results.map((serie) => Object.assign(serie, {serieOrMovie: 'movie'}));
+      mediasFromApiUnsorted = [...mediasFromApiUnsorted, ...mediaReturned];
     }
 
     const mediasFromApi = mediasFromApiUnsorted.sort((element1, element2) => element1.popularity - element2.popularity);
@@ -50,9 +52,8 @@ function Carousel( { genre: { id, name }, selectedLi: { wantSeries, wantMovies }
   };
 
   function galleryItems() {  
-    {console.log(mediasFromGenre)}
     return mediasFromGenre.map((media) => (
-      <div style={{margin: '20px', width: 'fit-content' }} key={ media.id }>
+      <div onClick={ () => handleSelectedNewBanner(media.id) } style={{margin: '20px', width: 'fit-content' }} key={ media.id }>
         <PosterCarousel src={ `https://image.tmdb.org/t/p/original${media.poster_path}` } />
       </div>
     ));
@@ -106,7 +107,8 @@ Carousel.propTypes = {
   selectedLi: PropTypes.shape({
     wantSeries: PropTypes.bool,
     wantMovies: PropTypes.bool
-  }).isRequired
+  }).isRequired,
+  handleSelectedNewBanner: PropTypes.func.isRequired
 };
 
 export default Carousel;

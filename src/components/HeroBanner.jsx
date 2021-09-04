@@ -12,13 +12,18 @@ import {
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import { faInfoCircle, faPlay } from '@fortawesome/free-solid-svg-icons';
 
-function HeroBanner({ mediaType }) {
+function HeroBanner({ mediaType, selectedNewBanner }) {
   const [mediaBackground, setMediaBackground] = useState({})
 
   useEffect(async () => {
-    const moviesFromApi = await fetchAPI(`/trending/${mediaType}/week?`)
-    setMediaBackground(moviesFromApi.results[0])
-  }, [mediaType]);
+    if (selectedNewBanner !== 0) {
+      const moviesFromApi = await fetchAPI(`/trending/${mediaType}/week?`);
+      setMediaBackground(moviesFromApi.results[0]);
+    } else {
+      const moviesFromApi = await fetchAPI(`/trending/${mediaType}/week?`);
+      setMediaBackground(moviesFromApi.results[0]);
+    }
+  }, [mediaType, selectedNewBanner]);
   return (
     <>
       { mediaBackground.backdrop_path ? 
@@ -46,7 +51,8 @@ function HeroBanner({ mediaType }) {
 }
 
 HeroBanner.propTypes = {
-  mediaType: PropTypes.string.isRequired
+  mediaType: PropTypes.string.isRequired,
+  selectedNewBanner: PropTypes.number.isRequired
 };
 
 export default HeroBanner;

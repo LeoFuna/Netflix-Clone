@@ -8,25 +8,34 @@ function Main() {
   const [genres, setGenres] = useState([]);
   const [selectedLi, setSelectedLi] = useState({ wantSeries: true, wantMovies: true });
   const [mediaType, setMediaType] = useState('all');
+  const [selectedNewBanner, setSelectedNewBanner] = useState(0);
 
   function handleSelectedLi(nameLi) {
     switch (nameLi) {
       case 'inicio':
           setSelectedLi({ wantSeries: true, wantMovies: true });
           setMediaType('all');
+          setSelectedNewBanner(0);
         break
       case 'series':
           setSelectedLi({ wantSeries: true, wantMovies: false });
           setMediaType('tv');
+          setSelectedNewBanner(0);
         break
       case 'filmes':
           setSelectedLi({ wantSeries: false, wantMovies: true });
           setMediaType('movie');
+          setSelectedNewBanner(0);
         break
       default:
           setSelectedLi({ wantSeries: true, wantMovies: true }); // ainda ajustar para lista de desejos
           setMediaType('all');
+          setSelectedNewBanner(0);
     }
+  }
+
+  function handleSelectedNewBanner(id) {
+    setSelectedNewBanner(id);
   }
 
   useEffect(async () => {
@@ -38,8 +47,8 @@ function Main() {
     return (
       <div>
         <Header handleSelectedLi={ handleSelectedLi } />
-        <HeroBanner mediaType={ mediaType } />
-        {genres.map((genre) => <Carousel selectedLi={ selectedLi } key={ genre.id } genre={ genre } /> )}
+        <HeroBanner selectedNewBanner={ selectedNewBanner } mediaType={ mediaType } />
+        {genres.map((genre) => <Carousel handleSelectedNewBanner={ handleSelectedNewBanner } selectedLi={ selectedLi } key={ genre.id } genre={ genre } /> )}
       </div>
     )
   }
