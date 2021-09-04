@@ -7,7 +7,7 @@ Aprendizados:
   - Utilização de Hooks em componentes funcionais
 
 Dificuldades:
-
+  - Leitura da documentação da Api e entendimento de como utilizá-la
   - Estruturação de um carrosel similar ao da Netflix (Usado biblioteca Alice-Carousel)
   - Animações usando CSS para elementos da paǵina
   - Responsividade para telas desktop menores

@@ -21,9 +21,9 @@ function Carousel( { genre: { id, name }, selectedLi: { wantSeries, wantMovies }
       const mediasFromApiMovie = await fetchAPI(`/discover/movie?with_genres=${ id }&sort_by=popularity.desc`);
       mediasFromApiUnsorted = [...mediasFromApiUnsorted, ...mediasFromApiMovie.results];
     }
-    
+
     const mediasFromApi = mediasFromApiUnsorted.sort((element1, element2) => element1.popularity - element2.popularity);
-    const filteredMedia = mediasFromApi.filter((media) => media.poster_path !== null && media.original_language !== 'jp')
+    const filteredMedia = mediasFromApi.filter((media) => media.poster_path !== null && media.original_language !== 'jp');
 
     if (filteredMedia.length > 8) {
       const sevenMedias = []
@@ -50,6 +50,7 @@ function Carousel( { genre: { id, name }, selectedLi: { wantSeries, wantMovies }
   };
 
   function galleryItems() {  
+    {console.log(mediasFromGenre)}
     return mediasFromGenre.map((media) => (
       <div style={{margin: '20px', width: 'fit-content' }} key={ media.id }>
         <PosterCarousel src={ `https://image.tmdb.org/t/p/original${media.poster_path}` } />

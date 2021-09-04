@@ -31,7 +31,7 @@ function HeroBanner({ mediaType }) {
             <div style={{ display: 'flex' }}>
               <HeroBannerButtons type="button" setWidth='200px' isDetailButton={false}>
                 <FontAwesomeIcon icon={ faPlay } />
-                <p>Assistir</p>
+                <p>Assistir depois</p>
               </HeroBannerButtons>
               <HeroBannerButtons type="button" setWidth='250px' setMarginLeft='12px' isDetailButton={true}>
                 <FontAwesomeIcon icon={ faInfoCircle } />
