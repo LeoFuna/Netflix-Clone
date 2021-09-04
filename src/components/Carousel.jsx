@@ -53,7 +53,7 @@ function Carousel( { genre: { id, name }, selectedLi: { wantSeries, wantMovies }
 
   function galleryItems() {  
     return mediasFromGenre.map((media) => (
-      <div onClick={ () => handleSelectedNewBanner(media.id) } style={{margin: '20px', width: 'fit-content' }} key={ media.id }>
+      <div onClick={ () => handleSelectedNewBanner(media.id, media.serieOrMovie) } style={{margin: '20px', width: 'fit-content' }} key={ media.id }>
         <PosterCarousel src={ `https://image.tmdb.org/t/p/original${media.poster_path}` } />
       </div>
     ));

@@ -34,7 +34,8 @@ function Main() {
     }
   }
 
-  function handleSelectedNewBanner(id) {
+  function handleSelectedNewBanner(id, serieOrMovie) {
+    console.log(serieOrMovie)
     setSelectedNewBanner(id);
   }
 
