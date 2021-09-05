@@ -53,7 +53,6 @@ function Main() {
   }
   
   useEffect(() => {
-    // const dataFilterPerQuery = await fetchAPI('/search/multi?query=la%20casa%20de%20papel&page=1&include_adult=false'); usar query parecida com essa para fazer a query
     setGenresToRender(returnArrayUnique([...genresMovie, ...genresSerie]));
   }, [genresMovie, genresSerie]);
   
