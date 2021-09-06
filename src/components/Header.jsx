@@ -1,12 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Logo, HeaderContainer, HeaderMainDiv, UlFromHeader, LiFromHeader, SearchBar, HeaderContainerRight, DivSearchBar, ProfileAvatar } from '../styles/MainStyles';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import netflixLogo from '../images/netflix-logo.png';
+import { fetchAPI } from '../services';
 
 
-function Header({ handleSelectedLi }) {
+function Header({ handleSelectedLi, handleIsSearching }) {
   const [isVisible, setIsVisible] = useState(false);
   const [readyToCloseSearchBar, setReadyToCloseSearchBar] = useState(false);
   const [transparencyOnHeader, setTransparecyOnHeader] = useState(true);
@@ -54,9 +55,15 @@ function Header({ handleSelectedLi }) {
     setQuery(target.value);
   }
 
-  // useEffect(() => {
-
-  // }, [query]) chamar a função de busca à api toda vez que query for alterado e não for ''
+  useEffect(async () => {
+    if (query && query !== ' ' && query !== '  ') { // pensar em forma melhor de resolver esse problema
+      const queryAdjusted = query.replace(/ /g, '%20');
+      const dataFilterPerQuery = await fetchAPI(`/search/multi?query=${ queryAdjusted }&page=1&include_adult=false`);
+      handleIsSearching(dataFilterPerQuery.results) // informação que vai ter que atualizar a page, lembrar que ele está na chave results
+    } else {
+      handleIsSearching([]);
+    }
+  }, [query]);
 
   return (
     <HeaderMainDiv>
@@ -81,6 +88,7 @@ function Header({ handleSelectedLi }) {
 
 Header.propTypes = {
   handleSelectedLi: PropTypes.func.isRequired,
+  handleIsSearching: PropTypes.func.isRequired,
 };
 
 export default Header;

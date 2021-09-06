@@ -12,6 +12,24 @@ function Carousel( { genre: { id, name }, selectedLi: { wantSeries, wantMovies }
   const [toggleCursor, setToggleCursor] = useState(false);
   const [toggleDivCarousel, setToggleDivCarousel] = useState(false);
   useEffect( async () => {
+    const mediasFromApiUnsorted = await handleSelectedType();
+    const mediasFromApi = mediasFromApiUnsorted.sort((element1, element2) => element1.popularity - element2.popularity);
+    const filteredMedia = mediasFromApi.filter((media) => media.poster_path && media.overview && media.vote_average);
+
+    if (filteredMedia.length > 8) {
+      const nineMedias = []
+      let index = 0
+      do {
+        nineMedias.push(filteredMedia[index]);
+        index += 1;
+      } while ( index < 9 )
+      setMediaFromGenre(nineMedias);
+    } else {
+      setMediaFromGenre([]);
+    }
+  }, [wantSeries, wantMovies]);
+
+  async function handleSelectedType() {
     let mediasFromApiUnsorted = [];
     if (wantSeries) {
       const mediasFromApiSeries = await fetchAPI(`/discover/tv?with_genres=${ id }&sort_by=popularity.desc`);
@@ -23,22 +41,8 @@ function Carousel( { genre: { id, name }, selectedLi: { wantSeries, wantMovies }
       const mediaReturned = mediasFromApiMovie.results.map((serie) => Object.assign(serie, {serieOrMovie: 'movie'}));
       mediasFromApiUnsorted = [...mediasFromApiUnsorted, ...mediaReturned];
     }
-
-    const mediasFromApi = mediasFromApiUnsorted.sort((element1, element2) => element1.popularity - element2.popularity);
-    const filteredMedia = mediasFromApi.filter((media) => media.poster_path && media.overview && media.vote_average);
-
-    if (filteredMedia.length > 8) {
-      const sevenMedias = []
-      let index = 0
-      do {
-        sevenMedias.push(filteredMedia[index]);
-        index += 1;
-      } while ( index < 9 )
-      setMediaFromGenre(sevenMedias)
-    } else {
-      setMediaFromGenre([])
-    }
-  }, [wantSeries, wantMovies]);
+    return mediasFromApiUnsorted;
+  }
 
   const responsive = {
     0: { items: 1 },

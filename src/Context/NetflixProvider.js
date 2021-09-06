@@ -8,9 +8,9 @@ function NetflixProvider({ children }) {
   useEffect( async () => {
     const genresFromApiMovie = await fetchAPI('/genre/movie/list?');
     const genresFromApiSerie = await fetchAPI('/genre/tv/list?');
-    setGenres({ genresMovie: genresFromApiMovie.genres, genresSerie: genresFromApiSerie.genres })
-  }, [])
-  
+    setGenres({ genresMovie: genresFromApiMovie.genres, genresSerie: genresFromApiSerie.genres });
+  }, []);
+
   return (
     <NetflixContext.Provider value={ { genres } } >
       { children }
