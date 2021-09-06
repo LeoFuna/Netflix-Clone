@@ -12,6 +12,7 @@ function Main() {
   const [mediaType, setMediaType] = useState('all');
   const [selectedNewBanner, setSelectedNewBanner] = useState({ id: 0, serieOrMovie: '' });
   const [isSearching, setIsSearching] = useState(false);
+  const [dataToRenderByQuery, setDataToRenderByQuery] = useState([{}]);
 
   function handleSelectedLi(nameLi) {
     setSelectedNewBanner({ id:0 , serieOrMovie: ''});
@@ -43,11 +44,13 @@ function Main() {
   }
 
   function handleIsSearching(dataFromQuery) {
-    console.log(dataFromQuery)
-    if (dataFromQuery) {
+    // console.log(dataFromQuery)
+    if (dataFromQuery.length > 0) {
       setIsSearching(true);
+      setDataToRenderByQuery(dataFromQuery)
     } else {
       setIsSearching(false);
+      setDataToRenderByQuery([]);
     }
   }
 
@@ -72,10 +75,10 @@ function Main() {
       <div>
         <Header handleIsSearching={ handleIsSearching } handleSelectedLi={ handleSelectedLi } />
         {isSearching ?  <div /> : <HeroBanner selectedNewBanner={ selectedNewBanner } mediaType={ mediaType } /> }
-        {isSearching ? <div /> : genresToRender.map(
+        {isSearching ? <div style={{ height: '90px', backgroundColor: 'transparent' }} /> : genresToRender.map(
           (genre) => <Carousel handleSelectedNewBanner={ handleSelectedNewBanner } selectedLi={ selectedLi } key={ genre.id } genre={ genre } /> )
         }
-        {isSearching ? <List /> : <div />}
+        {isSearching ? <List dataToRenderByQuery={ dataToRenderByQuery } /> : <div />}
       </div>
     )
   }

@@ -61,7 +61,7 @@ function Header({ handleSelectedLi, handleIsSearching }) {
       const dataFilterPerQuery = await fetchAPI(`/search/multi?query=${ queryAdjusted }&page=1&include_adult=false`);
       handleIsSearching(dataFilterPerQuery.results) // informação que vai ter que atualizar a page, lembrar que ele está na chave results
     } else {
-      handleIsSearching();
+      handleIsSearching([]);
     }
   }, [query]);
 
