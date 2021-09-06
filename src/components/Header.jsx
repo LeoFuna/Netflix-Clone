@@ -7,7 +7,7 @@ import netflixLogo from '../images/netflix-logo.png';
 import { fetchAPI } from '../services';
 
 
-function Header({ handleSelectedLi }) {
+function Header({ handleSelectedLi, handleIsSearching }) {
   const [isVisible, setIsVisible] = useState(false);
   const [readyToCloseSearchBar, setReadyToCloseSearchBar] = useState(false);
   const [transparencyOnHeader, setTransparecyOnHeader] = useState(true);
@@ -59,7 +59,9 @@ function Header({ handleSelectedLi }) {
     if (query && query !== ' ' && query !== '  ') { // pensar em forma melhor de resolver esse problema
       const queryAdjusted = query.replace(/ /g, '%20');
       const dataFilterPerQuery = await fetchAPI(`/search/multi?query=${ queryAdjusted }&page=1&include_adult=false`);
-      console.log(dataFilterPerQuery) // informação que vai ter que atualizar a page, lembrar que ele está na chave results
+      handleIsSearching(dataFilterPerQuery.results) // informação que vai ter que atualizar a page, lembrar que ele está na chave results
+    } else {
+      handleIsSearching();
     }
   }, [query]);
 
@@ -86,6 +88,7 @@ function Header({ handleSelectedLi }) {
 
 Header.propTypes = {
   handleSelectedLi: PropTypes.func.isRequired,
+  handleIsSearching: PropTypes.func.isRequired,
 };
 
 export default Header;

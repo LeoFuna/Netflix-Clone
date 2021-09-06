@@ -3,6 +3,7 @@ import Header from "../components/Header";
 import HeroBanner from "../components/HeroBanner";
 import Carousel from "../components/Carousel";
 import NetflixContext from "../Context/NetflixContext";
+import List from "../components/List";
 
 function Main() {
   const [genresToRender, setGenresToRender] = useState([]);
@@ -10,6 +11,7 @@ function Main() {
   const [selectedLi, setSelectedLi] = useState({ wantSeries: true, wantMovies: true });
   const [mediaType, setMediaType] = useState('all');
   const [selectedNewBanner, setSelectedNewBanner] = useState({ id: 0, serieOrMovie: '' });
+  const [isSearching, setIsSearching] = useState(false);
 
   function handleSelectedLi(nameLi) {
     setSelectedNewBanner({ id:0 , serieOrMovie: ''});
@@ -40,6 +42,15 @@ function Main() {
     setSelectedNewBanner({ id, serieOrMovie });
   }
 
+  function handleIsSearching(dataFromQuery) {
+    console.log(dataFromQuery)
+    if (dataFromQuery) {
+      setIsSearching(true);
+    } else {
+      setIsSearching(false);
+    }
+  }
+
   function returnArrayUnique(array) {
     let nonUniqueArray = array.concat();
     for(let index=0; index<nonUniqueArray.length; index += 1) {
@@ -59,9 +70,12 @@ function Main() {
   if (genresToRender.length !== 0) {
     return (
       <div>
-        <Header handleSelectedLi={ handleSelectedLi } />
-        <HeroBanner selectedNewBanner={ selectedNewBanner } mediaType={ mediaType } />
-        {genresToRender.map((genre) => <Carousel handleSelectedNewBanner={ handleSelectedNewBanner } selectedLi={ selectedLi } key={ genre.id } genre={ genre } /> )}
+        <Header handleIsSearching={ handleIsSearching } handleSelectedLi={ handleSelectedLi } />
+        {isSearching ?  <div /> : <HeroBanner selectedNewBanner={ selectedNewBanner } mediaType={ mediaType } /> }
+        {isSearching ? <div /> : genresToRender.map(
+          (genre) => <Carousel handleSelectedNewBanner={ handleSelectedNewBanner } selectedLi={ selectedLi } key={ genre.id } genre={ genre } /> )
+        }
+        {isSearching ? <List /> : <div />}
       </div>
     )
   }
