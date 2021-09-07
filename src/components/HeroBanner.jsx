@@ -32,7 +32,7 @@ function HeroBanner({ mediaType, selectedNewBanner }) {
           <HeroBannerDetails>
             <HeroBannerTitle>{ mediaBackground.title ? mediaBackground.title : mediaBackground.name }</HeroBannerTitle>
             <HeroBannerOverview>{ mediaBackground.overview }</HeroBannerOverview>
-            <HeroBannerVotes>{ mediaBackground.vote_average } pontos</HeroBannerVotes>
+            <HeroBannerVotes>{ mediaBackground.vote_average * 10 } % relevante</HeroBannerVotes>
             <div style={{ display: 'flex' }}>
               <HeroBannerButtons type="button" setWidth='200px' isDetailButton={false}>
                 <FontAwesomeIcon icon={ faPlay } />
