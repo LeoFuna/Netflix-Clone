@@ -75,7 +75,7 @@ function Main() {
       <div>
         <Header handleIsSearching={ handleIsSearching } handleSelectedLi={ handleSelectedLi } />
         {isSearching ?  <div /> : <HeroBanner selectedNewBanner={ selectedNewBanner } mediaType={ mediaType } /> }
-        {isSearching ? <div style={{ height: '90px', backgroundColor: 'transparent' }} /> : genresToRender.map(
+        {isSearching ? <div style={{ height: '90px', background: 'black' }} /> : genresToRender.map(
           (genre) => <Carousel handleSelectedNewBanner={ handleSelectedNewBanner } selectedLi={ selectedLi } key={ genre.id } genre={ genre } /> )
         }
         {isSearching ? <List dataToRenderByQuery={ dataToRenderByQuery } /> : <div />}
