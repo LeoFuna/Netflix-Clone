@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import PropTypes from 'prop-types';
 import { fetchAPI }  from '../services';
 import { 
@@ -11,17 +11,19 @@ import {
   HeroBannerVotes } from '../styles/MainStyles';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import { faInfoCircle, faPlay } from '@fortawesome/free-solid-svg-icons';
+import NetflixContext from '../Context/NetflixContext';
 
 function HeroBanner({ mediaType, selectedNewBanner }) {
   const [mediaBackground, setMediaBackground] = useState({})
+  const { handleShowDetails } = useContext(NetflixContext);
 
   useEffect(async () => {
     if (selectedNewBanner.serieOrMovie === '') {
       const moviesFromApi = await fetchAPI(`/trending/${mediaType}/week?`);
-      setMediaBackground(moviesFromApi.results[0]);
+      setMediaBackground(Object.assign(moviesFromApi.results[0], { serieOrMovie: moviesFromApi.results[0].media_type }));
     } else {
       const moviesFromApi = await fetchAPI(`/${selectedNewBanner.serieOrMovie}/${selectedNewBanner.id}?`);
-      setMediaBackground(moviesFromApi);
+      setMediaBackground(Object.assign(moviesFromApi, { serieOrMovie: selectedNewBanner.serieOrMovie }));
     }
   }, [mediaType, selectedNewBanner]);
   return (
@@ -38,7 +40,7 @@ function HeroBanner({ mediaType, selectedNewBanner }) {
                 <FontAwesomeIcon icon={ faPlay } />
                 <p>Assistir depois</p>
               </HeroBannerButtons>
-              <HeroBannerButtons type="button" setWidth='250px' setMarginLeft='12px' isDetailButton={true}>
+              <HeroBannerButtons onClick={ () => handleShowDetails(mediaBackground.id, mediaBackground.serieOrMovie) } type="button" setWidth='250px' setMarginLeft='12px' isDetailButton={true}>
                 <FontAwesomeIcon icon={ faInfoCircle } />
                 <p>Mais informações</p>
               </HeroBannerButtons>

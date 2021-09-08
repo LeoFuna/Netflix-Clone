@@ -312,3 +312,15 @@ export const HeaderCarousel = styled.h1`
     }
   }
 `;
+
+export const DetailsDiv = styled.div`
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000000;
+  background-color: white;
+  height: 80vh;
+  width: 80vw;
+  /* visibility: hidden; */
+`;

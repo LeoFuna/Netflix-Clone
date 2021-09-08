@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import Header from "../components/Header";
 import HeroBanner from "../components/HeroBanner";
 import Carousel from "../components/Carousel";
+import Details from "../components/Details";
 import NetflixContext from "../Context/NetflixContext";
 import List from "../components/List";
 
@@ -79,6 +80,7 @@ function Main() {
           (genre) => <Carousel handleSelectedNewBanner={ handleSelectedNewBanner } selectedLi={ selectedLi } key={ genre.id } genre={ genre } /> )
         }
         {isSearching ? <List dataToRenderByQuery={ dataToRenderByQuery } /> : <div />}
+        <Details />
       </div>
     )
   }

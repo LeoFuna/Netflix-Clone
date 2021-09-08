@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 function List({ dataToRenderByQuery }) {
-  console.log(dataToRenderByQuery)
   return (
     <div style={{ display: 'flex', flexWrap: 'wrap', backgroundColor: 'black', height: '100vh'}}>
       { dataToRenderByQuery.filter((media) => media.poster_path).map((media) => 

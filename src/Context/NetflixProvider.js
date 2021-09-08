@@ -5,6 +5,20 @@ import PropTypes from 'prop-types';
 
 function NetflixProvider({ children }) {
   const [genres, setGenres] = useState({ genresMovie: [], genresSerie: [] });
+  const [itemToDetail, setItemToDetail] = useState({});
+  const [itemToRenderOnDetail, setItemToRenderOnDetail] = useState({});
+
+  function handleShowDetails(id, mediaType) {
+    setItemToDetail({ id, mediaType });
+  }
+
+  useEffect(async () => {
+    if (Object.keys(itemToDetail).length > 0 ) {
+      const detailsFromApi = await fetchAPI(`/${itemToDetail.mediaType}/${itemToDetail.id}?`);
+      setItemToRenderOnDetail(detailsFromApi);
+    }
+  }, [itemToDetail]);
+
   useEffect( async () => {
     const genresFromApiMovie = await fetchAPI('/genre/movie/list?');
     const genresFromApiSerie = await fetchAPI('/genre/tv/list?');
@@ -12,7 +26,7 @@ function NetflixProvider({ children }) {
   }, []);
 
   return (
-    <NetflixContext.Provider value={ { genres } } >
+    <NetflixContext.Provider value={ { genres, handleShowDetails, itemToRenderOnDetail } } >
       { children }
     </NetflixContext.Provider>
   ) 
