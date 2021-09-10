@@ -322,5 +322,5 @@ export const DetailsDiv = styled.div`
   background-color: white;
   height: 80vh;
   width: 80vw;
-  /* visibility: hidden; */
+  display: ${ ({ showDetails }) => showDetails ? 'flex' : 'none' };
 `;

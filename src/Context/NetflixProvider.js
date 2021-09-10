@@ -6,10 +6,16 @@ import PropTypes from 'prop-types';
 function NetflixProvider({ children }) {
   const [genres, setGenres] = useState({ genresMovie: [], genresSerie: [] });
   const [itemToDetail, setItemToDetail] = useState({});
+  const [detailsVisibility, setDetailsVisibility] = useState(false);
   const [itemToRenderOnDetail, setItemToRenderOnDetail] = useState({});
 
   function handleShowDetails(id, mediaType) {
-    setItemToDetail({ id, mediaType });
+    if (id && mediaType) {
+      setItemToDetail({ id, mediaType });
+      setDetailsVisibility(true);
+    } else {
+      setDetailsVisibility(false);
+    }
   }
 
   useEffect(async () => {
@@ -26,7 +32,7 @@ function NetflixProvider({ children }) {
   }, []);
 
   return (
-    <NetflixContext.Provider value={ { genres, handleShowDetails, itemToRenderOnDetail } } >
+    <NetflixContext.Provider value={ { genres, handleShowDetails, itemToRenderOnDetail, detailsVisibility } } >
       { children }
     </NetflixContext.Provider>
   ) 
