@@ -319,8 +319,11 @@ export const DetailsDiv = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 1000000;
-  background-color: white;
-  height: 80vh;
-  width: 80vw;
+  height: 100vh;
+  width: 100vw;
   display: ${ ({ showDetails }) => showDetails ? 'flex' : 'none' };
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  backdrop-filter: blur(14px);
 `;
