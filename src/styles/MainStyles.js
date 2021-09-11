@@ -337,3 +337,24 @@ export const DetailsDiv = styled.div`
     }
   }
 `;
+
+export const ImageBackgroundOnDetails = styled.div`
+  display: block;
+  background-image: url(${ ({ imageDetails }) => imageDetails ? imageDetails : '' });
+  background-color: red;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 0%;
+  width: 80vw;
+  height: 55vh;
+  background-color: red;
+  & > .exit-button {
+    font-size: 2em;
+    color: white;
+    background-color: transparent;
+    border-style: none;
+    & :hover {
+      color: black;
+    }
+  }
+`;
