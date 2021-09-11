@@ -13,26 +13,26 @@ function Details() {
     return (
       <DetailsDiv showDetails={ detailsVisibility }>
         <div>
-          {console.log(itemToRender)}
-          <img src={`https://image.tmdb.org/t/p/original${itemToRender.backdrop_path}`} style={{ width: '40vw' }} />
-          <h1>{ itemToRender.title }</h1>
-          <p>{ itemToRender.overview }</p>
-          <p>{ itemToRender.vote_average * 10 }% relevante</p>
-          <p>{ itemToRender.vote_count } votos</p>
-          <p>Lançamento: { itemToRender.release_date }</p>
-          <p>{itemToRender.genres ? itemToRender.genres.map((genre) => genre.name) : ''}</p>
-          <p>{ itemToRender.runtime ? `${itemToRender.runtime} minutos` : '' }</p>
+          <div>
+            <img src={`https://image.tmdb.org/t/p/original${itemToRender.backdrop_path}`} style={{ width: '40vw' }} />
+            <h1>{ itemToRender.title }</h1>
+            <p>{ itemToRender.overview }</p>
+            <p>{ itemToRender.vote_average * 10 }% relevante</p>
+            <p>{ itemToRender.vote_count } votos</p>
+            <p>Lançamento: { itemToRender.release_date }</p>
+            <p>{itemToRender.genres ? itemToRender.genres.map((genre) => genre.name) : ''}</p>
+            <p>{ itemToRender.runtime ? `${itemToRender.runtime} minutos` : '' }</p>
+          </div>
+          <button onClick={ () => handleShowDetails() }>X</button>
+          <button>Assistir Depois</button>
         </div>
-        <button onClick={ () => handleShowDetails() }>X</button>
-        <button>Assistir Depois</button>
       </DetailsDiv>
     );
   }
   return (
     <DetailsDiv showDetails={ detailsVisibility }>
-      <div style={{ width: '80vw', height: '90vh', display: 'flex', justifyContent: 'center', backgroundColor: '#141414'}}>
-        <div style={{ color: 'white' }}>
-          {console.log(itemToRender)}
+      <div>
+        <div>
           <img src={`https://image.tmdb.org/t/p/original${itemToRender.backdrop_path}`} style={{ width: '40vw' }} />
           <h1>{ itemToRender.name }</h1>
           <p>{ itemToRender.overview }</p>

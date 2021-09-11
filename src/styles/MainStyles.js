@@ -326,4 +326,14 @@ export const DetailsDiv = styled.div`
   justify-content: center;
   background-color: transparent;
   backdrop-filter: blur(14px);
+  & > div {
+    width: 80vw;
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    background-color: #141414;
+    & > div {
+      color: white;
+    }
+  }
 `;
