@@ -339,17 +339,18 @@ export const DetailsDiv = styled.div`
 `;
 
 export const ImageBackgroundOnDetails = styled.div`
-  display: block;
+  display: flex;
+  justify-content: flex-end;
   background-image: url(${ ({ imageDetails }) => imageDetails ? imageDetails : '' });
-  background-color: red;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 50% 0%;
   width: 80vw;
   height: 55vh;
-  background-color: red;
   & > .exit-button {
-    font-size: 2em;
+    align-self: flex-start;
+    margin: 15px;
+    font-size: 2.5em;
     color: white;
     background-color: transparent;
     border-style: none;
