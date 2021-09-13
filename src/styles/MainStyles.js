@@ -356,6 +356,7 @@ export const ImageBackgroundOnDetails = styled.div`
     align-items: center;
     justify-content: center;
     font-size: 2em;
+    -webkit-text-stroke: 1.5px black;
   }
   & > div {
     width: 50%;
