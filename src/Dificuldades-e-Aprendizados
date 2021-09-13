@@ -5,6 +5,7 @@ Aprendizados:
   - Utilização do Styled Components trazendo CSS dinâmico usando props
   - Propriedade animation e transition do CSS para efeitos na página
   - Utilização de Hooks em componentes funcionais
+  - Pensar bem no código e estrutura da sua aplicação antes de codar, pois assim ela ficará mais legível e limpa, além de possuir menos "surpresas"
 
 Dificuldades:
   - Leitura da documentação da Api e entendimento de como utilizá-la
