@@ -353,10 +353,13 @@ export const ImageBackgroundOnDetails = styled.div`
   }
   & > .left-div {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    font-size: 2em;
-    -webkit-text-stroke: 1.5px black;
+    & > h1 {
+      font-size: 5em;
+      -webkit-text-stroke: 1.5px black;
+    }
   }
   & > div {
     width: 50%;

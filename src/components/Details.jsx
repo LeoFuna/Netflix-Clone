@@ -19,6 +19,7 @@ function Details() {
             <ImageBackgroundOnDetails imageDetails={ `https://image.tmdb.org/t/p/original${itemToRender.backdrop_path }` }>
               <div className="left-div">
                 <h1>{ itemToRender.title }</h1>
+                <button>Assistir Depois</button>
               </div>
               <div className="right-div">
                 <button className="exit-button" onClick={ () => handleShowDetails() }>
@@ -32,7 +33,6 @@ function Details() {
             <p>Lançamento: { itemToRender.release_date }</p>
             <p>{itemToRender.genres ? itemToRender.genres.map((genre) => genre.name) : ''}</p>
             <p>{ itemToRender.runtime ? `${itemToRender.runtime} minutos` : '' }</p>
-            <button>Assistir Depois</button>
           </div>
         </div>
       </DetailsDiv>
@@ -45,6 +45,7 @@ function Details() {
           <ImageBackgroundOnDetails imageDetails={ `https://image.tmdb.org/t/p/original${itemToRender.backdrop_path }` }>
             <div className="left-div">
               <h1>{ itemToRender.name }</h1>
+              <button>Assistir Depois</button>
             </div>
             <div className="right-div">
               <button className="exit-button" onClick={ () => handleShowDetails() }>
@@ -58,7 +59,6 @@ function Details() {
           <p>Lançamento: { itemToRender.first_air_date }</p>
           <p>{itemToRender.genres ? itemToRender.genres.map((genre) => genre.name) : ''}</p>
           <p>{ itemToRender.seasons ? `${itemToRender.seasons.length} temporadas` : '' }</p>
-          <button>Assistir Depois</button>
         </div>
       </div>
     </DetailsDiv>
