@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import NetflixContext from '../Context/NetflixContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTimesCircle } from '@fortawesome/free-solid-svg-icons';
+import { faThumbsDown, faThumbsUp, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 import { DetailsDiv, ImageBackgroundOnDetails } from '../styles/MainStyles';
 
 function Details() {
@@ -45,7 +45,15 @@ function Details() {
           <ImageBackgroundOnDetails imageDetails={ `https://image.tmdb.org/t/p/original${itemToRender.backdrop_path }` }>
             <div className="left-div">
               <h1>{ itemToRender.name }</h1>
-              <button>Assistir Depois</button>
+              <div>
+                <button>Assistir Depois</button>
+                <button>
+                  <FontAwesomeIcon icon={ faThumbsUp } />
+                </button>
+                <button>
+                  <FontAwesomeIcon icon={ faThumbsDown } />
+                </button>
+              </div>
             </div>
             <div className="right-div">
               <button className="exit-button" onClick={ () => handleShowDetails() }>
