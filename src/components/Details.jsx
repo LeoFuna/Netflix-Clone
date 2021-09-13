@@ -51,6 +51,9 @@ function Details() {
           <p>{itemToRender.genres ? itemToRender.genres.map((genre) => genre.name) : ''}</p>
           <p>{ itemToRender.seasons ? `${itemToRender.seasons.length} temporadas` : '' }</p>
           <button>Assistir Depois</button>
+          <p>TEST</p>
+          <p>OIIII</p>
+          <p>ALOUUU</p>
         </div>
       </div>
     </DetailsDiv>
