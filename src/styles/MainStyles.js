@@ -347,15 +347,32 @@ export const ImageBackgroundOnDetails = styled.div`
   background-position: 50% 0%;
   width: 80vw;
   height: 55vh;
-  & > .exit-button {
-    align-self: flex-start;
-    margin: 15px;
-    font-size: 2.5em;
-    color: white;
-    background-color: transparent;
-    border-style: none;
-    & :hover {
-      color: black;
+  & > .right-div {
+    display: flex;
+    justify-content: flex-end;
+  }
+  & > .left-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    & > h1 {
+      font-size: 5em;
+      -webkit-text-stroke: 1.5px black;
+    }
+  }
+  & > div {
+    width: 50%;
+    & > .exit-button {
+      align-self: flex-start;
+      margin: 15px;
+      font-size: 2.5em;
+      color: white;
+      background-color: transparent;
+      border-style: none;
+      & :hover {
+        color: black;
+      }
     }
   }
 `;
