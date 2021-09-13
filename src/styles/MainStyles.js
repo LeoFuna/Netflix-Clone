@@ -347,6 +347,16 @@ export const ImageBackgroundOnDetails = styled.div`
   background-position: 50% 0%;
   width: 80vw;
   height: 55vh;
+  & > .right-div {
+    display: flex;
+    justify-content: flex-end;
+  }
+  & > .left-div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2em;
+  }
   & > div {
     width: 50%;
     & > .exit-button {

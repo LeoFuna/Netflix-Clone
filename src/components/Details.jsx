@@ -17,10 +17,10 @@ function Details() {
         <div>
           <div>
             <ImageBackgroundOnDetails imageDetails={ `https://image.tmdb.org/t/p/original${itemToRender.backdrop_path }` }>
-              <div>
+              <div className="left-div">
                 <h1>{ itemToRender.title }</h1>
               </div>
-              <div>
+              <div className="right-div">
                 <button className="exit-button" onClick={ () => handleShowDetails() }>
                   <FontAwesomeIcon  icon={ faTimesCircle } />
                 </button>
@@ -43,10 +43,10 @@ function Details() {
       <div>
         <div>
           <ImageBackgroundOnDetails imageDetails={ `https://image.tmdb.org/t/p/original${itemToRender.backdrop_path }` }>
-            <div>
+            <div className="left-div">
               <h1>{ itemToRender.name }</h1>
             </div>
-            <div>
+            <div className="right-div">
               <button className="exit-button" onClick={ () => handleShowDetails() }>
                 <FontAwesomeIcon  icon={ faTimesCircle } />
               </button>
