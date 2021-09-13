@@ -17,11 +17,15 @@ function Details() {
         <div>
           <div>
             <ImageBackgroundOnDetails imageDetails={ `https://image.tmdb.org/t/p/original${itemToRender.backdrop_path }` }>
-              <button className="exit-button" onClick={ () => handleShowDetails() }>
-                <FontAwesomeIcon  icon={ faTimesCircle } />
-              </button>
+              <div>
+                <h1>{ itemToRender.title }</h1>
+              </div>
+              <div>
+                <button className="exit-button" onClick={ () => handleShowDetails() }>
+                  <FontAwesomeIcon  icon={ faTimesCircle } />
+                </button>
+              </div>
             </ImageBackgroundOnDetails>
-            <h1>{ itemToRender.title }</h1>
             <p>{ itemToRender.overview }</p>
             <p>{ itemToRender.vote_average * 10 }% relevante</p>
             <p>{ itemToRender.vote_count } votos</p>
@@ -39,11 +43,15 @@ function Details() {
       <div>
         <div>
           <ImageBackgroundOnDetails imageDetails={ `https://image.tmdb.org/t/p/original${itemToRender.backdrop_path }` }>
-            <button className="exit-button" onClick={ () => handleShowDetails() }>
-              <FontAwesomeIcon  icon={ faTimesCircle } />
-            </button>
+            <div>
+              <h1>{ itemToRender.name }</h1>
+            </div>
+            <div>
+              <button className="exit-button" onClick={ () => handleShowDetails() }>
+                <FontAwesomeIcon  icon={ faTimesCircle } />
+              </button>
+            </div>
           </ImageBackgroundOnDetails>
-          <h1>{ itemToRender.name }</h1>
           <p>{ itemToRender.overview }</p>
           <p>{ itemToRender.vote_average * 10 }% relevante</p>
           <p>{ itemToRender.vote_count } votos</p>
@@ -51,9 +59,6 @@ function Details() {
           <p>{itemToRender.genres ? itemToRender.genres.map((genre) => genre.name) : ''}</p>
           <p>{ itemToRender.seasons ? `${itemToRender.seasons.length} temporadas` : '' }</p>
           <button>Assistir Depois</button>
-          <p>TEST</p>
-          <p>OIIII</p>
-          <p>ALOUUU</p>
         </div>
       </div>
     </DetailsDiv>
