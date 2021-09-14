@@ -376,6 +376,30 @@ export const ImageBackgroundOnDetails = styled.div`
         color: rgba(255,255,255,.5);
         font-size: 1em;
       }
+      & > .watch-after-details-button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1em;
+        font-weight: bolder;
+        width: 200px;
+        height: 3em;
+        background-color:  white;
+        color: black;
+        border-radius: 8px;
+        border-width: 2px;
+        border: 2px solid rgba(0,0,0,0);
+        &:focus {
+          border: 2px solid rgba(0,0,0,1);
+          box-shadow: 0 0 0 1.5pt white;
+        }
+        &:hover {
+          background-color: rgba(255,255,255,0.8);
+        }
+        & > p {
+          margin-left: 12px;
+        }
+      }
     }
   }
   & > div {

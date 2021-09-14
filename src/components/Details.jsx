@@ -21,7 +21,7 @@ function Details() {
               <div className="left-div">
                 <h1>{ itemToRender.title }</h1>
                 <div>
-                  <button style={{ display: "flex", alignItems: "center" }}>
+                  <button className="watch-after-details-button">
                     <FontAwesomeIcon icon={ faPlay } />
                     <p>Assistir depois</p>
                   </button>
