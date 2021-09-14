@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useContext } from 'react';
 import NetflixContext from '../Context/NetflixContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faThumbsDown, faThumbsUp, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
+import { faPlay, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
+import { faThumbsUp, faThumbsDown } from '@fortawesome/free-regular-svg-icons';
 import { DetailsDiv, ImageBackgroundOnDetails } from '../styles/MainStyles';
 
 function Details() {
@@ -16,10 +17,21 @@ function Details() {
       <DetailsDiv showDetails={ detailsVisibility }>
         <div>
           <div>
-            <ImageBackgroundOnDetails imageDetails={ `https://image.tmdb.org/t/p/original${itemToRender.backdrop_path }` }>
+            <ImageBackgroundOnDetails imageDetails={ `https://image.tmdb.org/t/p/original${itemToRender.backdrop_path }` }> 
               <div className="left-div">
                 <h1>{ itemToRender.title }</h1>
-                <button>Assistir Depois</button>
+                <div>
+                  <button className="watch-after-details-button">
+                    <FontAwesomeIcon icon={ faPlay } />
+                    <p>Assistir depois</p>
+                  </button>
+                  <button className="thumbs-button">
+                    <FontAwesomeIcon icon={ faThumbsUp } />
+                  </button>
+                  <button className="thumbs-button">
+                    <FontAwesomeIcon icon={ faThumbsDown } />
+                  </button>
+                </div>
               </div>
               <div className="right-div">
                 <button className="exit-button" onClick={ () => handleShowDetails() }>
@@ -33,7 +45,7 @@ function Details() {
             <p>Lançamento: { itemToRender.release_date }</p>
             <p>{itemToRender.genres ? itemToRender.genres.map((genre) => genre.name) : ''}</p>
             <p>{ itemToRender.runtime ? `${itemToRender.runtime} minutos` : '' }</p>
-          </div>
+            </div>
         </div>
       </DetailsDiv>
     );
@@ -46,7 +58,10 @@ function Details() {
             <div className="left-div">
               <h1>{ itemToRender.name }</h1>
               <div>
-                <button>Assistir Depois</button>
+                <button>
+                  <FontAwesomeIcon icon={ faPlay } />
+                    <p>Assistir depois</p>
+                </button>
                 <button>
                   <FontAwesomeIcon icon={ faThumbsUp } />
                 </button>

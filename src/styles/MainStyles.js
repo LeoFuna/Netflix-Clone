@@ -153,7 +153,6 @@ export const GradientOnBannerContainer = styled.div`
   width: inherit;
   height: inherit;
   position: relative;
-  background: rgb(0,0,0);
   background: linear-gradient(360deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.7511379551820728) 30%, rgba(0,0,0,0) 100%);
   display: flex;
   align-items: center;
@@ -329,12 +328,11 @@ export const DetailsDiv = styled.div`
   & > div {
     width: 80vw;
     height: 90vh;
+    border-radius: 15px;
     display: flex;
     justify-content: center;
     background-color: #141414;
-    & > div {
-      color: white;
-    }
+    color: white;
   }
 `;
 
@@ -347,6 +345,7 @@ export const ImageBackgroundOnDetails = styled.div`
   background-position: 50% 0%;
   width: 80vw;
   height: 55vh;
+  border-radius: 15px;
   & > .right-div {
     display: flex;
     justify-content: flex-end;
@@ -359,6 +358,47 @@ export const ImageBackgroundOnDetails = styled.div`
     & > h1 {
       font-size: 5em;
       -webkit-text-stroke: 1.5px black;
+    }
+    & > div {
+      display: flex;
+      align-items: center;
+      width: 80%;
+      height: 20%;
+      & > .thumbs-button {
+        width: 3em;
+        height: 3em;
+        margin: 10px 0px 10px 10px;
+        border-color: rgba(255,255,255,.5);
+        border-radius: 50%;
+        border-width: 2px;
+        background-color: rgba(42,42,42,.6);
+        color: rgba(255,255,255,.5);
+        font-size: 1em;
+      }
+      & > .watch-after-details-button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1em;
+        font-weight: bolder;
+        width: 200px;
+        height: 3em;
+        background-color:  white;
+        color: black;
+        border-radius: 8px;
+        border-width: 2px;
+        border: 2px solid rgba(0,0,0,0);
+        &:focus {
+          border: 2px solid rgba(0,0,0,1);
+          box-shadow: 0 0 0 1.5pt white;
+        }
+        &:hover {
+          background-color: rgba(255,255,255,0.8);
+        }
+        & > p {
+          margin-left: 12px;
+        }
+      }
     }
   }
   & > div {
