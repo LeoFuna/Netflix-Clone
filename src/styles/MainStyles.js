@@ -360,6 +360,16 @@ export const ImageBackgroundOnDetails = styled.div`
       font-size: 5em;
       -webkit-text-stroke: 1.5px black;
     }
+    & > div {
+      display: flex;
+      & > .thumbs-button {
+        border-color: rgba(255,255,255,.5);
+        border-radius: 50%;
+        border-width: 2px;
+        background-color: rgba(42,42,42,.6);
+        color: rgba(255,255,255,.5);
+      }
+    }
   }
   & > div {
     width: 50%;
