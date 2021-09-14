@@ -362,12 +362,19 @@ export const ImageBackgroundOnDetails = styled.div`
     }
     & > div {
       display: flex;
+      align-items: center;
+      width: 80%;
+      height: 20%;
       & > .thumbs-button {
+        width: 3em;
+        height: 3em;
+        margin: 10px 0px 10px 10px;
         border-color: rgba(255,255,255,.5);
         border-radius: 50%;
         border-width: 2px;
         background-color: rgba(42,42,42,.6);
         color: rgba(255,255,255,.5);
+        font-size: 1em;
       }
     }
   }
