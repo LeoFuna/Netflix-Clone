@@ -153,7 +153,6 @@ export const GradientOnBannerContainer = styled.div`
   width: inherit;
   height: inherit;
   position: relative;
-  background: rgb(0,0,0);
   background: linear-gradient(360deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.7511379551820728) 30%, rgba(0,0,0,0) 100%);
   display: flex;
   align-items: center;
@@ -329,12 +328,11 @@ export const DetailsDiv = styled.div`
   & > div {
     width: 80vw;
     height: 90vh;
+    border-radius: 15px;
     display: flex;
     justify-content: center;
     background-color: #141414;
-    & > div {
-      color: white;
-    }
+    color: white;
   }
 `;
 
@@ -347,6 +345,7 @@ export const ImageBackgroundOnDetails = styled.div`
   background-position: 50% 0%;
   width: 80vw;
   height: 55vh;
+  border-radius: 15px;
   & > .right-div {
     display: flex;
     justify-content: flex-end;

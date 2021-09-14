@@ -17,7 +17,7 @@ function Details() {
       <DetailsDiv showDetails={ detailsVisibility }>
         <div>
           <div>
-            <ImageBackgroundOnDetails imageDetails={ `https://image.tmdb.org/t/p/original${itemToRender.backdrop_path }` }>
+            <ImageBackgroundOnDetails imageDetails={ `https://image.tmdb.org/t/p/original${itemToRender.backdrop_path }` }> 
               <div className="left-div">
                 <h1>{ itemToRender.title }</h1>
                 <div>
@@ -45,7 +45,7 @@ function Details() {
             <p>Lançamento: { itemToRender.release_date }</p>
             <p>{itemToRender.genres ? itemToRender.genres.map((genre) => genre.name) : ''}</p>
             <p>{ itemToRender.runtime ? `${itemToRender.runtime} minutos` : '' }</p>
-          </div>
+            </div>
         </div>
       </DetailsDiv>
     );
