@@ -381,15 +381,26 @@ export const ImageBackgroundOnDetails = styled.div`
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        & > h1 {
-          font-size: 5em;
-          -webkit-text-stroke: 1.5px black;
+        & > .title-details {
+          height: 80%;
+          align-self: flex-start;
+          display: flex;
+          align-items: flex-end;
+          & > h1 {
+            margin-left: 0.95em;
+            font-size: 2.8em;
+            -webkit-text-stroke: 1.5px black;
+            @media only screen and (min-width: 1680px) {
+              font-size: 3.2em;
+            }
+          }
         }
         & > div {
           display: flex;
           align-items: center;
-          width: 80%;
-          height: 20%;
+          justify-content: flex-start;
+          width: 85%;
+          height: 15%;
             & > .thumbs-button {
               width: 3em;
               height: 3em;
@@ -434,10 +445,13 @@ export const ImageBackgroundOnDetails = styled.div`
       & > .right-down-div {
         height: 100%;
         width: 50%;
+        margin-top: 1.4em;
+        margin-left: 1em;
         display: flex;
         flex-direction: column;
-        align-items: center;
-        justify-content: center;
+        align-items: flex-start;
+        justify-content: flex-start;
+        font-size: 1.1em;
       }
       & > .left-down-div {
         height: 100%;
@@ -446,15 +460,32 @@ export const ImageBackgroundOnDetails = styled.div`
         flex-direction: column;
         justify-content: flex-start;
         align-items: flex-start;
+        & > .overview-details {
+          margin-left: 2.5em;
+          margin-right: 2em;
+          font-size: 1em;
+          @media only screen and (min-width: 1680px) {
+            font-size: 1.2em;
+          }
+          @media only screen and (min-width: 1440px) and (max-width: 1680px) {
+            font-size: 1.1em;
+          }
+        }
         & > .tags-details {
           display: flex;
-          margin-top: 60px;
+          margin-top: 2em;
           & > p {
-            margin: 10px;
+            margin: 5px;
+            margin-left: 2.5em;
+            font-size: 1.3em;
+          }
+          & > .relevance-details {
+            color: #46d369;
+            font-size: 1.3em;
+            font-weight: bolder;
           }
         }
       }
     }
   }
-
 `;
