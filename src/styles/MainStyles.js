@@ -382,15 +382,19 @@ export const ImageBackgroundOnDetails = styled.div`
         align-items: center;
         justify-content: center;
         & > h1 {
-          margin-left: 1em;
+          margin-left: 0.8em;
           align-self: flex-start;
-          font-size: 4em;
+          font-size: 3em;
           -webkit-text-stroke: 1.5px black;
+          @media only screen and (min-width: 1680px) {
+            font-size: 4em;
+          }
         }
         & > div {
           display: flex;
           align-items: center;
-          width: 80%;
+          justify-content: flex-start;
+          width: 85%;
           height: 20%;
             & > .thumbs-button {
               width: 3em;
@@ -436,7 +440,8 @@ export const ImageBackgroundOnDetails = styled.div`
       & > .right-down-div {
         height: 100%;
         width: 50%;
-        margin-top: 50px;
+        margin-top: 1.4em;
+        margin-left: 1em;
         display: flex;
         flex-direction: column;
         align-items: flex-start;
@@ -451,16 +456,22 @@ export const ImageBackgroundOnDetails = styled.div`
         justify-content: flex-start;
         align-items: flex-start;
         & > .overview-details {
-          margin-left: 1em;
+          margin-left: 2.5em;
           margin-right: 2em;
-          font-size: 1.2em;
+          font-size: 1em;
+          @media only screen and (min-width: 1680px) {
+            font-size: 1.2em;
+          }
+          @media only screen and (min-width: 1440px) and (max-width: 1680px) {
+            font-size: 1.1em;
+          }
         }
         & > .tags-details {
           display: flex;
-          margin-top: 60px;
+          margin-top: 2em;
           & > p {
-            margin: 10px;
-            margin-left: 1em;
+            margin: 5px;
+            margin-left: 2.5em;
             font-size: 1.3em;
           }
           & > .relevance-details {
@@ -472,5 +483,4 @@ export const ImageBackgroundOnDetails = styled.div`
       }
     }
   }
-
 `;
