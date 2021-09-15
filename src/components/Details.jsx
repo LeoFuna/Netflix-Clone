@@ -10,8 +10,9 @@ function Details() {
   const { itemToRenderOnDetail, detailsVisibility, handleShowDetails } = useContext(NetflixContext);
   useEffect(() => {
     setItemToRender(itemToRenderOnDetail);
+    console.log(itemToRenderOnDetail)
   }, [itemToRenderOnDetail]);
-
+  
   if (itemToRender.original_title) {
     return (
       <DetailsDiv showDetails={ detailsVisibility }>
@@ -49,7 +50,7 @@ function Details() {
                       <p>{ itemToRender.release_date.split("-")[0] }</p>
                       <p>{ itemToRender.runtime ? `${itemToRender.runtime} min` : '' }</p>
                     </div>
-                    <p className="overview-details">{ itemToRender.overview }</p>
+                    <p className="overview-details">{ itemToRender.overview ? itemToRender.overview : "Desculpe, não há descrição pelo produtor..." }</p>
                   </div>
                   <div className="right-down-div">
                     <p><span style={{ color: "#777" }}>Votos: </span>{ itemToRender.vote_count }</p>
@@ -100,14 +101,14 @@ function Details() {
                   <p>{ itemToRender.first_air_date ? itemToRender.first_air_date.split("-")[0] : '' }</p>
                   <p>{ itemToRender.seasons ? `${itemToRender.number_of_seasons} Temporada(s)` : '' }</p> 
                 </div>
-                <p className="overview-details">{ itemToRender.overview }</p>
+                <p className="overview-details">{ itemToRender.overview ? itemToRender.overview : "Desculpe, não há descrição pelo produtor..." }</p>
               </div>
               <div className="right-down-div">
                 <p><span style={{ color: "#777" }}>Votos: </span>{ itemToRender.vote_count }</p>
                 <p><span style={{ color: "#777" }}>Gêneros: </span>{itemToRender.genres ? itemToRender.genres.map((genre) => `${genre.name} | `) : ''}</p>
                 <p><span style={{ color: "#777" }}>Total de episódios: </span>{ itemToRender.number_of_episodes }</p>
                 <p><span style={{ color: "#777" }}>Último Lançamento: </span>{ itemToRender.last_air_date ? itemToRender.last_air_date.split("-")[0] : '' }</p>
-                <p><span style={{ color: "#777" }}>Criado por: </span>{ itemToRender.created_by ? itemToRender.created_by.map((author) => `${author.name} | `) : '' }</p>
+                <p><span style={{ color: "#777" }}>{ itemToRender.created_by === [] ? 'Criado por: ' : ''}</span>{ itemToRender.created_by === [] ? itemToRender.created_by.map((author) => `${author.name} | `) : '' }</p>
               </div>
             </div>
           </div>

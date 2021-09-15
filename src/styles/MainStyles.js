@@ -341,7 +341,7 @@ export const DetailsDiv = styled.div`
 export const ImageBackgroundOnDetails = styled.div`
   display: flex;
   justify-content: flex-end;
-  background-image: url(${ ({ imageDetails }) => imageDetails ? imageDetails : '' });
+  background-image: url(${ ({ imageDetails }) => imageDetails !== 'https://image.tmdb.org/t/p/originalnull'  ? imageDetails : `http://www.wellesleysocietyofartists.org/wp-content/uploads/2015/11/image-not-found.jpg` });
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 50% 0%;
@@ -447,6 +447,7 @@ export const ImageBackgroundOnDetails = styled.div`
         width: 50%;
         margin-top: 1.4em;
         margin-left: 1em;
+        margin-right: 1.5em;
         display: flex;
         flex-direction: column;
         align-items: flex-start;
