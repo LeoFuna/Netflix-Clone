@@ -381,13 +381,18 @@ export const ImageBackgroundOnDetails = styled.div`
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        & > h1 {
-          margin-left: 0.8em;
+        & > .title-details {
+          height: 80%;
           align-self: flex-start;
-          font-size: 3em;
-          -webkit-text-stroke: 1.5px black;
-          @media only screen and (min-width: 1680px) {
-            font-size: 4em;
+          display: flex;
+          align-items: flex-end;
+          & > h1 {
+            margin-left: 0.95em;
+            font-size: 2.8em;
+            -webkit-text-stroke: 1.5px black;
+            @media only screen and (min-width: 1680px) {
+              font-size: 3.2em;
+            }
           }
         }
         & > div {
@@ -395,7 +400,7 @@ export const ImageBackgroundOnDetails = styled.div`
           align-items: center;
           justify-content: flex-start;
           width: 85%;
-          height: 20%;
+          height: 15%;
             & > .thumbs-button {
               width: 3em;
               height: 3em;

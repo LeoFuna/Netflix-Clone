@@ -20,7 +20,9 @@ function Details() {
               <div className="gradient-div">
                 <div className="up-div-details">
                   <div className="left-up-div">
-                    <h1>{ itemToRender.title }</h1>
+                    <div className="title-details">
+                      <h1>{ itemToRender.title }</h1>
+                    </div>
                     <div>
                       <button className="watch-after-details-button">
                         <FontAwesomeIcon icon={ faPlay } />
