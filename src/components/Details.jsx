@@ -64,37 +64,49 @@ function Details() {
   }
   return (
     <DetailsDiv showDetails={ detailsVisibility }>
-      <div>
-        <div>
-          <ImageBackgroundOnDetails imageDetails={ `https://image.tmdb.org/t/p/original${itemToRender.backdrop_path }` }>
-            <div className="left-div">
-              <h1>{ itemToRender.name }</h1>
-              <div>
-                <button>
-                  <FontAwesomeIcon icon={ faPlay } />
+      <div className="main-div-details"> 
+        <ImageBackgroundOnDetails imageDetails={ `https://image.tmdb.org/t/p/original${itemToRender.backdrop_path }` }>
+          <div className="gradient-div">
+            <div className="up-div-details">
+              <div className="left-up-div">
+                <div className="title-details">
+                  <h1>{ itemToRender.name }</h1>
+                </div>
+                <div>
+                  <button className="watch-after-details-button">
+                    <FontAwesomeIcon icon={ faPlay } />
                     <p>Assistir depois</p>
-                </button>
-                <button>
-                  <FontAwesomeIcon icon={ faThumbsUp } />
-                </button>
-                <button>
-                  <FontAwesomeIcon icon={ faThumbsDown } />
+                  </button>
+                  <button className="thumbs-button">
+                    <FontAwesomeIcon icon={ faThumbsUp } />
+                  </button>
+                  <button className="thumbs-button">
+                    <FontAwesomeIcon icon={ faThumbsDown } />
+                  </button>
+                </div>
+              </div>
+              <div className="right-up-div">
+                <button className="exit-button" onClick={ () => handleShowDetails() }>
+                  <FontAwesomeIcon  icon={ faTimesCircle } />
                 </button>
               </div>
             </div>
-            <div className="right-div">
-              <button className="exit-button" onClick={ () => handleShowDetails() }>
-                <FontAwesomeIcon  icon={ faTimesCircle } />
-              </button>
+            <div className="down-div-details">
+              <div className="left-down-div">
+                <div className="tags-details">
+                  <p className="relevance-details">{ itemToRender.vote_average * 10 }% relevante</p>
+                  <p>{ itemToRender.first_air_date.split("-")[0] }</p>
+                  <p>{ itemToRender.seasons ? `${itemToRender.seasons.length} Temporada(s)` : '' }</p> 
+                </div>
+                <p className="overview-details">{ itemToRender.overview }</p>
+              </div>
+              <div className="right-down-div">
+                <p><span style={{ color: "#777" }}>Votos: </span>{ itemToRender.vote_count }</p>
+                <p><span style={{ color: "#777" }}>Gêneros: </span>{itemToRender.genres ? itemToRender.genres.map((genre) => `${genre.name} | `) : ''}</p>
+              </div>
             </div>
-          </ImageBackgroundOnDetails>
-          <p>{ itemToRender.overview }</p>
-          <p>{ itemToRender.vote_average * 10 }% relevante</p>
-          <p>{ itemToRender.vote_count } votos</p>
-          <p>Lançamento: { itemToRender.first_air_date }</p>
-          <p>{itemToRender.genres ? itemToRender.genres.map((genre) => genre.name) : ''}</p>
-          <p>{ itemToRender.seasons ? `${itemToRender.seasons.length} temporadas` : '' }</p>
-        </div>
+          </div>
+        </ImageBackgroundOnDetails>
       </div>
     </DetailsDiv>
   )
