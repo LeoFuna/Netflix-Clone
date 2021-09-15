@@ -95,7 +95,7 @@ function Details() {
               <div className="left-down-div">
                 <div className="tags-details">
                   <p className="relevance-details">{ itemToRender.vote_average * 10 }% relevante</p>
-                  <p>{ itemToRender.first_air_date.split("-")[0] }</p>
+                  <p>{ itemToRender.first_air_date ? itemToRender.first_air_date.split("-")[0] : '' }</p>
                   <p>{ itemToRender.seasons ? `${itemToRender.seasons.length} Temporada(s)` : '' }</p> 
                 </div>
                 <p className="overview-details">{ itemToRender.overview }</p>
