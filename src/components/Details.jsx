@@ -43,11 +43,11 @@ function Details() {
                 <div className="down-div-details">
                   <div className="left-down-div">
                     <div className="tags-details">
-                      <p>{ itemToRender.vote_average * 10 }% relevante</p>
-                      <p>Lançamento: { itemToRender.release_date }</p>
-                      <p>{ itemToRender.runtime ? `${itemToRender.runtime} minutos` : '' }</p>
+                      <p className="relevance-details">{ itemToRender.vote_average * 10 }% relevante</p>
+                      <p>{ itemToRender.release_date.split("-")[0] }</p>
+                      <p>{ itemToRender.runtime ? `${itemToRender.runtime} min` : '' }</p>
                     </div>
-                    <p>{ itemToRender.overview }</p>
+                    <p className="overview-details">{ itemToRender.overview }</p>
                   </div>
                   <div className="right-down-div">
                     <p>{ itemToRender.vote_count } votos</p>

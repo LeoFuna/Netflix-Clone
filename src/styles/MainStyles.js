@@ -382,7 +382,7 @@ export const ImageBackgroundOnDetails = styled.div`
         align-items: center;
         justify-content: center;
         & > h1 {
-          font-size: 5em;
+          font-size: 4em;
           -webkit-text-stroke: 1.5px black;
         }
         & > div {
@@ -446,11 +446,22 @@ export const ImageBackgroundOnDetails = styled.div`
         flex-direction: column;
         justify-content: flex-start;
         align-items: flex-start;
+        & > .overview-details {
+          margin-left: 1em;
+          font-size: 1.3em;
+        }
         & > .tags-details {
           display: flex;
           margin-top: 60px;
           & > p {
             margin: 10px;
+            margin-left: 1em;
+            font-size: 1.3em;
+          }
+          & > .relevance-details {
+            color: #46d369;
+            font-size: 1.3em;
+            font-weight: bolder;
           }
         }
       }
