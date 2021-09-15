@@ -50,8 +50,8 @@ function Details() {
                     <p className="overview-details">{ itemToRender.overview }</p>
                   </div>
                   <div className="right-down-div">
-                    <p>{ itemToRender.vote_count } votos</p>
-                    <p>{itemToRender.genres ? itemToRender.genres.map((genre) => genre.name) : ''}</p>
+                    <p><span style={{ color: "#777" }}>Votos:</span> { itemToRender.vote_count }</p>
+                    <p><span style={{ color: "#777" }}>Gêneros:</span> {itemToRender.genres ? itemToRender.genres.map((genre) => `${genre.name} | `) : ''}</p>
                   </div>
                 </div>
               </div>

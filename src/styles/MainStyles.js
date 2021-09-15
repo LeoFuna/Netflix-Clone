@@ -382,6 +382,8 @@ export const ImageBackgroundOnDetails = styled.div`
         align-items: center;
         justify-content: center;
         & > h1 {
+          margin-left: 1em;
+          align-self: flex-start;
           font-size: 4em;
           -webkit-text-stroke: 1.5px black;
         }
@@ -434,10 +436,12 @@ export const ImageBackgroundOnDetails = styled.div`
       & > .right-down-div {
         height: 100%;
         width: 50%;
+        margin-top: 50px;
         display: flex;
         flex-direction: column;
-        align-items: center;
-        justify-content: center;
+        align-items: flex-start;
+        justify-content: flex-start;
+        font-size: 1.1em;
       }
       & > .left-down-div {
         height: 100%;
@@ -448,7 +452,8 @@ export const ImageBackgroundOnDetails = styled.div`
         align-items: flex-start;
         & > .overview-details {
           margin-left: 1em;
-          font-size: 1.3em;
+          margin-right: 2em;
+          font-size: 1.2em;
         }
         & > .tags-details {
           display: flex;
