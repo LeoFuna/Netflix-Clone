@@ -52,8 +52,10 @@ function Details() {
                     <p className="overview-details">{ itemToRender.overview }</p>
                   </div>
                   <div className="right-down-div">
-                    <p><span style={{ color: "#777" }}>Votos:</span> { itemToRender.vote_count }</p>
-                    <p><span style={{ color: "#777" }}>Gêneros:</span> {itemToRender.genres ? itemToRender.genres.map((genre) => `${genre.name} | `) : ''}</p>
+                    <p><span style={{ color: "#777" }}>Votos: </span>{ itemToRender.vote_count }</p>
+                    <p><span style={{ color: "#777" }}>Gêneros: </span>{itemToRender.genres ? itemToRender.genres.map((genre) => `${genre.name} | `) : ''}</p>
+                    <p><span style={{ color: "#777" }}>Produzido por: </span>{itemToRender.production_companies ? itemToRender.production_companies.map((company) => `${company.name} | `) : ''}</p>
+                    <p><span style={{ color: "#777" }}>Pontos de popularidade: </span>{ Math.round(itemToRender.popularity) }</p>
                   </div>
                 </div>
               </div>
@@ -96,13 +98,16 @@ function Details() {
                 <div className="tags-details">
                   <p className="relevance-details">{ itemToRender.vote_average * 10 }% relevante</p>
                   <p>{ itemToRender.first_air_date ? itemToRender.first_air_date.split("-")[0] : '' }</p>
-                  <p>{ itemToRender.seasons ? `${itemToRender.seasons.length} Temporada(s)` : '' }</p> 
+                  <p>{ itemToRender.seasons ? `${itemToRender.number_of_seasons} Temporada(s)` : '' }</p> 
                 </div>
                 <p className="overview-details">{ itemToRender.overview }</p>
               </div>
               <div className="right-down-div">
                 <p><span style={{ color: "#777" }}>Votos: </span>{ itemToRender.vote_count }</p>
                 <p><span style={{ color: "#777" }}>Gêneros: </span>{itemToRender.genres ? itemToRender.genres.map((genre) => `${genre.name} | `) : ''}</p>
+                <p><span style={{ color: "#777" }}>Total de episódios: </span>{ itemToRender.number_of_episodes }</p>
+                <p><span style={{ color: "#777" }}>Último Lançamento: </span>{ itemToRender.last_air_date ? itemToRender.last_air_date.split("-")[0] : '' }</p>
+                <p><span style={{ color: "#777" }}>Criado por: </span>{ itemToRender.created_by ? itemToRender.created_by.map((author) => `${author.name} | `) : '' }</p>
               </div>
             </div>
           </div>
