@@ -7,7 +7,7 @@ import { DetailsDiv, ImageBackgroundOnDetails } from '../styles/MainStyles';
 
 function Details() {
   const [itemToRender, setItemToRender] = useState({});
-  const { itemToRenderOnDetail, detailsVisibility, handleShowDetails } = useContext(NetflixContext);
+  const { itemToRenderOnDetail, detailsVisibility, handleShowDetails, handleLikeAndDislike, likedItems, dislikedItems } = useContext(NetflixContext);
   useEffect(() => {
     setItemToRender(itemToRenderOnDetail);
     console.log(itemToRenderOnDetail)
@@ -29,11 +29,19 @@ function Details() {
                         <FontAwesomeIcon icon={ faPlay } />
                         <p>Assistir depois</p>
                       </button>
-                      <button className="thumbs-button">
-                        <FontAwesomeIcon icon={ faThumbsUp } />
+                      <button className="thumbs-button" onClick={ () => handleLikeAndDislike(itemToRender, 'like') }>
+                        { likedItems.filter((item) => item.id === itemToRender.id).length > 0 
+                        ? 
+                        <FontAwesomeIcon style={{ fontSize: '1.1em', color: 'white' }} icon={ faThumbsUp } /> 
+                        :
+                        <FontAwesomeIcon icon={ faThumbsUp } /> }
                       </button>
-                      <button className="thumbs-button">
-                        <FontAwesomeIcon icon={ faThumbsDown } />
+                      <button className="thumbs-button" onClick={ () => handleLikeAndDislike(itemToRender, 'dislike') }>
+                        { dislikedItems.filter((item) => item.id === itemToRender.id).length > 0 
+                        ? 
+                        <FontAwesomeIcon style={{ fontSize: '1.1em', color: 'white' }} icon={ faThumbsDown } /> 
+                        :
+                        <FontAwesomeIcon icon={ faThumbsDown } /> }
                       </button>
                     </div>
                   </div>

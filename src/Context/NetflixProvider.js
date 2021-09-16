@@ -8,6 +8,8 @@ function NetflixProvider({ children }) {
   const [itemToDetail, setItemToDetail] = useState({});
   const [detailsVisibility, setDetailsVisibility] = useState(false);
   const [itemToRenderOnDetail, setItemToRenderOnDetail] = useState({});
+  const [likedItems, setLikedItems] = useState([]);
+  const [dislikedItems, setDislikedItems] = useState([]);
 
   function handleShowDetails(id, mediaType) {
     if (id && mediaType) {
@@ -15,6 +17,16 @@ function NetflixProvider({ children }) {
       setDetailsVisibility(true);
     } else {
       setDetailsVisibility(false);
+    }
+  }
+
+  function handleLikeAndDislike(media, likeOrDislike) {
+    if (likeOrDislike === 'like') {
+      const likedMedia = likedItems.filter((item) => item.id === media.id );
+      likedMedia.length > 0 ? setLikedItems(likedItems.filter((item) => item.id !== media.id)) : setLikedItems([...likedItems, media]);
+    } else {
+      const dislikedMedia = dislikedItems.filter((item) => item.id === media.id );
+      dislikedMedia.length > 0 ? setDislikedItems(dislikedItems.filter((item) => item.id !== media.id)) : setDislikedItems([...dislikedItems, media]);
     }
   }
 
@@ -32,7 +44,7 @@ function NetflixProvider({ children }) {
   }, []);
 
   return (
-    <NetflixContext.Provider value={ { genres, handleShowDetails, itemToRenderOnDetail, detailsVisibility } } >
+    <NetflixContext.Provider value={ { genres, handleShowDetails, itemToRenderOnDetail, detailsVisibility, handleLikeAndDislike, likedItems, dislikedItems } } >
       { children }
     </NetflixContext.Provider>
   ) 
