@@ -26,11 +26,18 @@ function NetflixProvider({ children }) {
     if (likeOrDislike === 'like') {
       const likedMedia = likedItems.filter((item) => item.id === media.id );
       const dislikedMedia = dislikedItems.filter((item) => item.id === media.id);
+      // GARANTE QUE DARÁ LIKE QUANDO NENHUM DOS BOTOES TIVER ACIONAMENTO
       if (likedMedia.length === 0 & dislikedMedia.length === 0) {
         setLikedItems([...likedItems, media]);
-      } 
+      }
+      // GARANTE QUE TIRARÁ O LIKE QUANDO O LIKE FOR CLICKADO NOVAMENTE
       if (likedMedia.length !== 0) {
-        setLikedItems(likedItems.filter((item) => item.id !== media.id))
+        setLikedItems(likedItems.filter((item) => item.id !== media.id));
+      }
+      // GARANTE QUE CASO O DISLIKE JÁ ESTEJA ACIONADO ELE FAÇA UMA ALTERAÇÃO PARA LIKE AO TER O LIKE CLICKADO, ASSIM NÃO GERANDO LIKE E DISLIKE JUNTOS
+      else {
+        setDislikedItems(dislikedItems.filter((item) => item.id !== media.id));
+        setLikedItems([...likedItems, media]);
       }
     } else {
       const likedMedia = likedItems.filter((item) => item.id === media.id );
@@ -39,7 +46,10 @@ function NetflixProvider({ children }) {
         setDislikedItems([...dislikedItems, media]);
       } 
       if (dislikedMedia.length !== 0) {
-        setDislikedItems(dislikedItems.filter((item) => item.id !== media.id))
+        setDislikedItems(dislikedItems.filter((item) => item.id !== media.id));
+      } else {
+        setLikedItems(likedItems.filter((item) => item.id !== media.id))
+        setDislikedItems([...dislikedItems, media]);
       }
     }
   }
