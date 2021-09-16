@@ -20,13 +20,27 @@ function NetflixProvider({ children }) {
     }
   }
 
+// FUNÇÃO QUE UTILIZA UMA "FLAG" PARA SABER EM QUAL CONDICIONAL ENTRAR E A PARTIR DAI FAZ VERIFICAÇÕES PARA ADICIONAR FILMES/SERIES AO LIKE OU DISLIKE
+// GARANTINDO QUE NÃO HAJA LIKE E DISLIKE NO MESMO FILME, POR NAO FAZER SENTIDO
   function handleLikeAndDislike(media, likeOrDislike) {
     if (likeOrDislike === 'like') {
       const likedMedia = likedItems.filter((item) => item.id === media.id );
-      likedMedia.length > 0 ? setLikedItems(likedItems.filter((item) => item.id !== media.id)) : setLikedItems([...likedItems, media]);
+      const dislikedMedia = dislikedItems.filter((item) => item.id === media.id);
+      if (likedMedia.length === 0 & dislikedMedia.length === 0) {
+        setLikedItems([...likedItems, media]);
+      } 
+      if (likedMedia.length !== 0) {
+        setLikedItems(likedItems.filter((item) => item.id !== media.id))
+      }
     } else {
+      const likedMedia = likedItems.filter((item) => item.id === media.id );
       const dislikedMedia = dislikedItems.filter((item) => item.id === media.id );
-      dislikedMedia.length > 0 ? setDislikedItems(dislikedItems.filter((item) => item.id !== media.id)) : setDislikedItems([...dislikedItems, media]);
+      if (likedMedia.length === 0 & dislikedMedia.length === 0) {
+        setDislikedItems([...dislikedItems, media]);
+      } 
+      if (dislikedMedia.length !== 0) {
+        setDislikedItems(dislikedItems.filter((item) => item.id !== media.id))
+      }
     }
   }
 
