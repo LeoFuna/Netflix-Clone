@@ -57,11 +57,11 @@ function Header({ handleSelectedLi, handleIsSearching }) {
 
   useEffect(async () => {
     if (query && query !== ' ' && query !== '  ') { // pensar em forma melhor de resolver esse problema
-      const queryAdjusted = query.replace(/ /g, '%20');
+      const queryAdjusted = query.replace(/ /g, '%20'); // ajusta a pesquisa para retirar os espaços e poder fazer a query
       const dataFilterPerQuery = await fetchAPI(`/search/multi?query=${ queryAdjusted }&page=1&include_adult=false`);
-      handleIsSearching(dataFilterPerQuery.results) // informação que vai ter que atualizar a page, lembrar que ele está na chave results
+      handleIsSearching(dataFilterPerQuery.results);
     } else {
-      handleIsSearching([]);
+      handleIsSearching(['semBusca']); // para mostrar quando não há mais busca no searching
     }
   }, [query]);
 

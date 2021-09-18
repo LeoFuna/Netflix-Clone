@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 function List({ dataToRenderByQuery }) {
   const { handleShowDetails } = useContext(NetflixContext);
   return (
-    <div style={{ display: 'flex', flexWrap: 'wrap', backgroundColor: 'black', height: '100vh'}}>
+    <div style={{ display: 'flex', flexWrap: 'wrap', backgroundColor: 'black', height: '100vh', paddingLeft: '7vw' }}>
       { dataToRenderByQuery.filter((media) => media.poster_path).map((media) => 
       <div key={ media.id }>
         <img 

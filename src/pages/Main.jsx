@@ -47,9 +47,9 @@ function Main() {
   }
 
   function handleIsSearching(dataFromQuery) {
-    if (dataFromQuery.length > 0) {
+    if (dataFromQuery[0] !== 'semBusca') {
       setIsSearching(true);
-      setDataToRenderByQuery(dataFromQuery)
+      setDataToRenderByQuery(dataFromQuery);
     } else {
       setIsSearching(false);
       setDataToRenderByQuery([]);
@@ -81,7 +81,7 @@ function Main() {
           (genre) => <Carousel handleSelectedNewBanner={ handleSelectedNewBanner } selectedLi={ selectedLi } key={ genre.id } genre={ genre } /> )
         }
         { isSearching ? <List dataToRenderByQuery={ dataToRenderByQuery } /> : <div /> }
-        { isWatchAfterList ? <List dataToRenderByQuery={ watchAfterList } /> : <div /> }
+        { isWatchAfterList && !isSearching ? <List dataToRenderByQuery={ watchAfterList } /> : <div /> }
         <Details />
       </div>
     )
