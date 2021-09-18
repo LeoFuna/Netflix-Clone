@@ -10,7 +10,6 @@ function Details() {
   const { itemToRenderOnDetail, detailsVisibility, handleShowDetails, handleLikeAndDislike, likedItems, dislikedItems } = useContext(NetflixContext);
   useEffect(() => {
     setItemToRender(itemToRenderOnDetail);
-    console.log(itemToRenderOnDetail)
   }, [itemToRenderOnDetail]);
   
   if (itemToRender.original_title) {
