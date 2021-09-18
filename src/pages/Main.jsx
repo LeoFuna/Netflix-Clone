@@ -39,9 +39,6 @@ function Main() {
         break
       default:
           setIsWatchAfterList(true);
-          // setGenresToRender(returnArrayUnique([...genresMovie, ...genresSerie]));
-          // setSelectedLi({ wantSeries: true, wantMovies: true }); // ainda ajustar para lista de desejos
-          // setMediaType('all');
     }
   }
 
