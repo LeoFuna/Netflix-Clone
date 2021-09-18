@@ -7,10 +7,9 @@ import { DetailsDiv, ImageBackgroundOnDetails } from '../styles/MainStyles';
 
 function Details() {
   const [itemToRender, setItemToRender] = useState({});
-  const { itemToRenderOnDetail, detailsVisibility, handleShowDetails, handleLikeAndDislike, likedItems, dislikedItems } = useContext(NetflixContext);
+  const { itemToRenderOnDetail, detailsVisibility, handleShowDetails, handleLikeAndDislike, likedItems, dislikedItems, handleWatchAfterList } = useContext(NetflixContext);
   useEffect(() => {
     setItemToRender(itemToRenderOnDetail);
-    console.log(itemToRenderOnDetail)
   }, [itemToRenderOnDetail]);
   
   if (itemToRender.original_title) {
@@ -25,7 +24,7 @@ function Details() {
                       <h1>{ itemToRender.title }</h1>
                     </div>
                     <div>
-                      <button className="watch-after-details-button">
+                      <button onClick={ () => handleWatchAfterList(itemToRender) } className="watch-after-details-button">
                         <FontAwesomeIcon icon={ faPlay } />
                         <p>Assistir depois</p>
                       </button>
@@ -84,7 +83,7 @@ function Details() {
                   <h1>{ itemToRender.name }</h1>
                 </div>
                 <div>
-                  <button className="watch-after-details-button">
+                  <button onClick={ () => handleWatchAfterList(itemToRender) } className="watch-after-details-button">
                     <FontAwesomeIcon icon={ faPlay } />
                     <p>Assistir depois</p>
                   </button>

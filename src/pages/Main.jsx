@@ -8,11 +8,12 @@ import List from "../components/List";
 
 function Main() {
   const [genresToRender, setGenresToRender] = useState([]);
-  const { genres: { genresMovie, genresSerie } } = useContext(NetflixContext);
+  const { genres: { genresMovie, genresSerie }, watchAfterList } = useContext(NetflixContext);
   const [selectedLi, setSelectedLi] = useState({ wantSeries: true, wantMovies: true });
   const [mediaType, setMediaType] = useState('all');
   const [selectedNewBanner, setSelectedNewBanner] = useState({ id: 0, serieOrMovie: '' });
   const [isSearching, setIsSearching] = useState(false);
+  const [isWatchAfterList, setIsWatchAfterList] = useState(false);
   const [dataToRenderByQuery, setDataToRenderByQuery] = useState([{}]);
 
   function handleSelectedLi(nameLi) {
@@ -22,21 +23,22 @@ function Main() {
           setGenresToRender(returnArrayUnique([...genresMovie, ...genresSerie]));
           setSelectedLi({ wantSeries: true, wantMovies: true });
           setMediaType('all');
+          setIsWatchAfterList(false);
         break
       case 'series':
           setGenresToRender(genresSerie);
           setSelectedLi({ wantSeries: true, wantMovies: false });
           setMediaType('tv');
+          setIsWatchAfterList(false);
         break
       case 'filmes':
           setGenresToRender(genresMovie);
           setSelectedLi({ wantSeries: false, wantMovies: true });
           setMediaType('movie');
+          setIsWatchAfterList(false);
         break
       default:
-          setGenresToRender(returnArrayUnique([...genresMovie, ...genresSerie]));
-          setSelectedLi({ wantSeries: true, wantMovies: true }); // ainda ajustar para lista de desejos
-          setMediaType('all');
+          setIsWatchAfterList(true);
     }
   }
 
@@ -45,10 +47,9 @@ function Main() {
   }
 
   function handleIsSearching(dataFromQuery) {
-    // console.log(dataFromQuery)
-    if (dataFromQuery.length > 0) {
+    if (dataFromQuery[0] !== 'semBusca') {
       setIsSearching(true);
-      setDataToRenderByQuery(dataFromQuery)
+      setDataToRenderByQuery(dataFromQuery);
     } else {
       setIsSearching(false);
       setDataToRenderByQuery([]);
@@ -75,11 +76,12 @@ function Main() {
     return (
       <div>
         <Header handleIsSearching={ handleIsSearching } handleSelectedLi={ handleSelectedLi } />
-        {isSearching ?  <div /> : <HeroBanner selectedNewBanner={ selectedNewBanner } mediaType={ mediaType } /> }
-        {isSearching ? <div style={{ height: '90px', background: 'black' }} /> : genresToRender.map(
+        { isSearching || isWatchAfterList ?  <div /> : <HeroBanner selectedNewBanner={ selectedNewBanner } mediaType={ mediaType } /> }
+        { isSearching || isWatchAfterList ? <div style={{ height: '90px', background: 'black' }} /> : genresToRender.map(
           (genre) => <Carousel handleSelectedNewBanner={ handleSelectedNewBanner } selectedLi={ selectedLi } key={ genre.id } genre={ genre } /> )
         }
-        {isSearching ? <List dataToRenderByQuery={ dataToRenderByQuery } /> : <div />}
+        { isSearching ? <List dataToRenderByQuery={ dataToRenderByQuery } /> : <div /> }
+        { isWatchAfterList && !isSearching ? <List dataToRenderByQuery={ watchAfterList } /> : <div /> }
         <Details />
       </div>
     )

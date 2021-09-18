@@ -10,15 +10,24 @@ function NetflixProvider({ children }) {
   const [itemToRenderOnDetail, setItemToRenderOnDetail] = useState({});
   const [likedItems, setLikedItems] = useState([]);
   const [dislikedItems, setDislikedItems] = useState([]);
+  const [watchAfterList, setWatchAfterList] = useState([]);
 
-  function handleShowDetails(id, mediaType) {
-    if (id && mediaType) {
-      setItemToDetail({ id, mediaType });
+  function handleShowDetails(id, mediaType, serieOrMovie) {
+    if (id && mediaType || id && serieOrMovie) {
+      mediaType ? setItemToDetail({ id, mediaType }) : setItemToDetail({ id, mediaType: serieOrMovie });
       setDetailsVisibility(true);
     } else {
       setDetailsVisibility(false);
     }
   }
+
+  useEffect(async () => {
+    if (Object.keys(itemToDetail).length > 0 ) {
+      const detailsFromApi = await fetchAPI(`/${itemToDetail.mediaType}/${itemToDetail.id}?`);
+      detailsFromApi["serieOrMovie"] = itemToDetail.mediaType;
+      setItemToRenderOnDetail(detailsFromApi);
+    }
+  }, [itemToDetail]);
 
 // FUNÇÃO QUE UTILIZA UMA "FLAG" PARA SABER EM QUAL CONDICIONAL ENTRAR E A PARTIR DAI FAZ VERIFICAÇÕES PARA ADICIONAR FILMES/SERIES AO LIKE OU DISLIKE
 // GARANTINDO QUE NÃO HAJA LIKE E DISLIKE NO MESMO FILME, POR NAO FAZER SENTIDO
@@ -54,12 +63,14 @@ function NetflixProvider({ children }) {
     }
   }
 
-  useEffect(async () => {
-    if (Object.keys(itemToDetail).length > 0 ) {
-      const detailsFromApi = await fetchAPI(`/${itemToDetail.mediaType}/${itemToDetail.id}?`);
-      setItemToRenderOnDetail(detailsFromApi);
+  function handleWatchAfterList(media) {
+    const mediaThatWasSelected = watchAfterList.filter((item) => item.id === media.id);
+    if (mediaThatWasSelected[0]) {
+      setWatchAfterList(watchAfterList.filter((item) => item.id !== media.id ));
+    } else {
+      setWatchAfterList([...watchAfterList, media]);
     }
-  }, [itemToDetail]);
+  }
 
   useEffect( async () => {
     const genresFromApiMovie = await fetchAPI('/genre/movie/list?');
@@ -68,7 +79,18 @@ function NetflixProvider({ children }) {
   }, []);
 
   return (
-    <NetflixContext.Provider value={ { genres, handleShowDetails, itemToRenderOnDetail, detailsVisibility, handleLikeAndDislike, likedItems, dislikedItems } } >
+    <NetflixContext.Provider value={ 
+      { genres, 
+        handleShowDetails,
+        itemToRenderOnDetail,
+        detailsVisibility, 
+        handleLikeAndDislike, 
+        likedItems, 
+        dislikedItems,
+        handleWatchAfterList,
+        watchAfterList
+      } 
+      } >
       { children }
     </NetflixContext.Provider>
   ) 

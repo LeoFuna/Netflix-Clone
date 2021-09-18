@@ -15,7 +15,7 @@ import NetflixContext from '../Context/NetflixContext';
 
 function HeroBanner({ mediaType, selectedNewBanner }) {
   const [mediaBackground, setMediaBackground] = useState({})
-  const { handleShowDetails } = useContext(NetflixContext);
+  const { handleShowDetails, handleWatchAfterList } = useContext(NetflixContext);
 
   useEffect(async () => {
     if (selectedNewBanner.serieOrMovie === '') {
@@ -36,7 +36,7 @@ function HeroBanner({ mediaType, selectedNewBanner }) {
             <HeroBannerOverview>{ mediaBackground.overview }</HeroBannerOverview>
             <HeroBannerVotes>{ mediaBackground.vote_average * 10 } % relevante</HeroBannerVotes>
             <div style={{ display: 'flex' }}>
-              <HeroBannerButtons type="button" setWidth='200px' isDetailButton={false}>
+              <HeroBannerButtons onClick={ () => handleWatchAfterList(mediaBackground) } type="button" setWidth='200px' isDetailButton={false}>
                 <FontAwesomeIcon icon={ faPlay } />
                 <p>Assistir depois</p>
               </HeroBannerButtons>
