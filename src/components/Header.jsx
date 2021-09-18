@@ -23,6 +23,7 @@ function Header({ handleSelectedLi, handleIsSearching }) {
     if (isVisible) {
       setReadyToCloseSearchBar(true);
       setTimeout(() => setIsVisible(false), 380);
+      setQuery('');
     } else {
       setReadyToCloseSearchBar(false);
       setIsVisible(true);
@@ -56,7 +57,10 @@ function Header({ handleSelectedLi, handleIsSearching }) {
   }
 
   useEffect(async () => {
-    if (query && query !== ' ' && query !== '  ') { // pensar em forma melhor de resolver esse problema
+    if (query === ' ') { // garante que o primeiro caracter nao seja espaço
+      alert('Digite algo');
+      setQuery('');
+    } else if (query) { // pensar em forma melhor de resolver esse problema
       const queryAdjusted = query.replace(/ /g, '%20'); // ajusta a pesquisa para retirar os espaços e poder fazer a query
       const dataFilterPerQuery = await fetchAPI(`/search/multi?query=${ queryAdjusted }&page=1&include_adult=false`);
       handleIsSearching(dataFilterPerQuery.results);
