@@ -25,11 +25,13 @@ Olá seja bem vindo(a) ao meu projeto Netflix Clone, esse projeto pessoal foi de
 
 ![visual do inicio](./src/images/Inicio.png)
 <br><br>
-![visual das perguntas](./questionPreview.png)
+![visual dos_carrosseis](./src/images/carroseis.png)
 <br><br>
-![visual das perguntas respondidas](./questionFinishedPreview.png)
+![visual dos_detalhes](./src/images/detalhes.png)
 <br><br>
-![visual das perguntas respondidas](./rankingPreview.png)
+![visual da_lista_do_usuario](./src/images/minhaLista.png)
+<br><br>
+![visual do_campo_de_busca_e_resultado](./src/images/campoDeBusca.png)
 
 ---
 
