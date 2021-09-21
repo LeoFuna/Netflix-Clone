@@ -23,7 +23,7 @@ Olá seja bem vindo(a) ao meu projeto Netflix Clone, esse projeto pessoal foi de
 --- 
 # A aplicação
 
-![visual do login](./loginPreview.png)
+![visual do inicio](./src/images/Inicio.png)
 <br><br>
 ![visual das perguntas](./questionPreview.png)
 <br><br>
